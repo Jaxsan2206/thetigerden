@@ -1,0 +1,35 @@
+One index.tsx page for the homepage. 
+One [...slug].tsx page for everything else. 
+
+We need a component generator in both. 
+
+
+Do we need a theme object in the components? I suppose we do. 
+
+
+What content types are needed?
+
+templateHomePage
+templateLandingPage
+featurePanel 
+Jumbotron
+Hero
+Carousel 
+Timetable 
+Gallery
+Accordion
+SectionHeader
+Stats
+Header 
+Footer
+Form
+
+
+Need to add in global styles. 
+Setup storybook 
+
+
+Typography
+Link
+Textblock
+Button
