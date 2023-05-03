@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
-import { Container } from "../../UI/Layout/Layout";
+import { Container } from "../Layout/Layout";
 import { INextImage } from "./Images.interface";
 import { ImageProps as NextImageProps } from "next/image";
 

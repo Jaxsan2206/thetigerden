@@ -1,4 +1,4 @@
-export interface ISpaceThemeObj {
+interface ISpaceThemeObj {
   [key: number | string ]: number; 
 }
   
@@ -26,7 +26,21 @@ spaceNumbers.xxlarge = spaceNumbers[7];
 spaceNumbers.xxxlarge = spaceNumbers[8];
 spaceNumbers.xxxxlarge = spaceNumbers[9];
 
-const space = {
+export interface ISpace {
+  [key: number]: string; 
+  none: string; 
+  xsmall: string; 
+  small: string; 
+  medium: string; 
+  base: string; 
+  large: string; 
+  xlarge: string; 
+  xxlarge: string; 
+  xxxlarge: string; 
+  xxxxlarge: string; 
+}
+
+export const space: ISpace = {
   0: `${spaceNumbers[0]}`,
   1: `${spaceNumbers[1]}rem`,
   2: `${spaceNumbers[2]}rem`,
@@ -48,5 +62,3 @@ const space = {
   xxxlarge: `${spaceNumbers[8]}rem`, // 72px
   xxxxlarge: `${spaceNumbers[9]}rem`, // 144px
 };
-
-export default space;

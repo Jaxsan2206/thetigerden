@@ -1,4 +1,4 @@
-interface IColorThemeObj {
+export interface IColorThemeObj {
     [key : string] : string; 
 }
 

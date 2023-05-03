@@ -1,4 +1,11 @@
-export const textSize = {
+export interface ITextSize {
+  [key: string]: {
+    fontSize: string; 
+    lineHeight: string; 
+  }
+}
+
+export const textStyles: ITextSize = {
     xxlarge: {
       fontSize: '2.8rem',
       lineHeight: '3.8rem',
@@ -27,4 +34,4 @@ export const textSize = {
       fontSize: '1.2rem',
       lineHeight: '1.8rem',
     },
-  };
+};

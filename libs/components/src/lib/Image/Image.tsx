@@ -1,5 +1,4 @@
-import React, { PropsWithChildren } from "react";
-import { Container } from "../../UI/Layout/Layout";
+import React from "react";
 import { NextImage, NextImageContainer } from "./Image.styles";
 import { IImageProps } from "./Images.interface";
 

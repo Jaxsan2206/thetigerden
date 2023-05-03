@@ -1,6 +1,7 @@
 import { Box } from "../FlexBox/FlexBox";
+import { IContainerProps } from "./Layout.interface";
 
-export const Container = ({ 
+export const Container: React.FC<React.PropsWithChildren<IContainerProps>> = ({ 
     children, 
     fullWidth = false, 
     ...rest 
