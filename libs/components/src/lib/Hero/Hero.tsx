@@ -1,13 +1,32 @@
-import React from 'react'
-import { Container } from '../Layout/Layout'; 
-import Image from 'next/image';
+import React from "react";
+import Image from "../Image/Image";
+import { HeroVideo, PrimaryHeading, SecondaryHeading, Wrapper } from "./Hero.style";
+import { IHeroProps } from "./Hero.interface";
 
-const Hero = () => {
+const Hero: React.FC<IHeroProps> = ({
+  image,
+  video,
+  primaryHeading,
+  secondaryHeading,
+}) => {
   return (
-    <Container>
-        <Image src="https://images.ctfassets.net/c5iz9ysb7wxa/5TVvITd7FpMnvSyne4kv1s/25daa36ea01c7b52f9d22ca2b6db2dd7/image_1.png" alt ="Tiger den hero" width={1440} height={620}></Image>
-    </Container>
-  )
-}
+    <Wrapper>
+      {image?.src && <Image {...image} />}
+      {video && (
+        <HeroVideo
+          url={video}
+          playing
+          loop
+          muted
+          width="100%"
+          height="inherit"
+          controls={false}
+        />
+      )}
+      <PrimaryHeading size={'xlarge'}>{primaryHeading}</PrimaryHeading>
+      <SecondaryHeading size={'xlarge'}>{secondaryHeading}</SecondaryHeading>
+    </Wrapper>
+  );
+};
 
-export default Hero
+export default Hero;

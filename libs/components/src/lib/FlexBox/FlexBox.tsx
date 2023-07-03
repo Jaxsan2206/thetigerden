@@ -7,13 +7,13 @@ import {
     typography, 
     color, 
     flexbox
-} from 'styled-system'; 
+} from 'styled-system';
 
 export const Box: React.FC<React.PropsWithChildren<IBoxProps>> = styled('div')(
     {
         boxSizing: 'border-box',
         margin: 0, 
-        minWidth: 0
+        minWidth: 0,
     }, 
     //  The css prop is a special prop that allows developers to pass in custom styles to the component. By using this function, we can ensure that any custom styles passed in via the css prop are applied to the component along with the default styles. 
     props => props.css, 

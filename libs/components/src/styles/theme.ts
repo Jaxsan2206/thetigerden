@@ -1,7 +1,7 @@
 import { IBreakpointsThemeObj, breakpoints } from "./standardStyles/breakpoints";
 import { IMediaQueries, mediaQueries } from "./standardStyles/mediaQueries";
 import { ISpace, space } from "./standardStyles/space";
-import { ITextSize, textStyles } from "./standardStyles/textStyles";
+import textStyles, { ITextStyles } from "./standardStyles/textStyles";
 import { IColorThemeObj, colors } from "./standardStyles/colors";
 
 export interface ITheme {
@@ -9,7 +9,7 @@ export interface ITheme {
     mediaQueries: IMediaQueries; 
     breakpoints: IBreakpointsThemeObj; 
     space: ISpace; 
-    textStyles: ITextSize; 
+    textStyles: ITextStyles; 
 }
 
 const theme: ITheme = {

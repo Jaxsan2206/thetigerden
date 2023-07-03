@@ -18,7 +18,8 @@ const baseColors = {
 
 export const colors: IColorThemeObj = {
     ...baseColors, 
-    primary: 'green', 
-    secondary: 'purple', 
-    accent1: 'yellow', 
+    primary: baseColors.black, 
+    secondary: baseColors.white, 
+    accent1: '#FB8824',
+    accent2: '#FCBC78'
 }

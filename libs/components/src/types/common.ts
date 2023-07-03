@@ -6,4 +6,18 @@ export type TextSize = 'xxlarge' | 'xlarge' | 'large' | 'medium' | 'small' | 'xs
 
 export interface IBaseProps {
     theme?: ITheme; 
+}; 
+
+export interface IImageProps {
+    src: string; 
+    alt: string; 
+    type?: string; 
+    width?: string | number; 
+    height?: string | number; 
+}; 
+
+export interface IButtonProps {
+    label: string; 
+    url: string; 
+    variant: Variant; 
 }

@@ -1,13 +1,6 @@
-export interface IImageProps {
-    image: {
-        src: string; 
-        alt: string; 
-    }
-    height: number; 
-    width: number; 
-    type: string; 
-}
+import { ImageProps as NextImageProps } from "next/image";
 
-export interface INextImage {
+
+export interface INextImage extends NextImageProps {
     type: string; 
 }
