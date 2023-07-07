@@ -1,16 +1,15 @@
 import React from "react";
 import { NextImage, NextImageContainer } from "./Image.styles";
-import { IImageProps } from "./Images.interface";
+import { IImageProps } from "../../types/common";
 
-const Image: React.FC<IImageProps> = ({ image, height, width, type }) => {
+const Image: React.FC<IImageProps> = ({ src, alt, type, ...rest }) => {
   return (
-    <NextImageContainer>
+    <NextImageContainer {...rest}>
       <NextImage
-        src={image.src}
-        alt={image.alt}
-        width={width}
-        height={height}
-        type = {type}
+        fill = {true}
+        src={src}
+        alt={alt}
+        type={type as string}
       />
     </NextImageContainer>
   );

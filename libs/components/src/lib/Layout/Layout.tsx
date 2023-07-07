@@ -1,10 +1,11 @@
 import { Box } from "../FlexBox/FlexBox";
-import { IContainerProps } from "./Layout.interface";
+import { IColumnProps, IContainerProps } from "./Layout.interface";
+import { StyledColumn } from "./Layout.styles";
 
-export const Container: React.FC<React.PropsWithChildren<IContainerProps>> = ({ 
-    children, 
-    fullWidth = false, 
-    ...rest 
+export const Container: React.FC<React.PropsWithChildren<IContainerProps>> = ({
+  children,
+  fullWidth = false,
+  ...rest
 }) => (
   <Box
     px={["base", null]}
@@ -15,4 +16,10 @@ export const Container: React.FC<React.PropsWithChildren<IContainerProps>> = ({
   >
     {children}
   </Box>
+);
+
+export const Column: React.FC<React.PropsWithChildren<IColumnProps>> = ({ children, width, ...rest }) => (
+  <StyledColumn width={width} height={'auto'} {...rest}>
+    {children}
+  </StyledColumn>
 );

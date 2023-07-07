@@ -1,6 +1,7 @@
+//  https://nextjs.org/docs/basic-features/font-optimization
 import { Poppins } from 'next/font/google';
 
-const poppins = Poppins({ weight: '400', preload: false })
+const poppins = Poppins({ weight: ['100','200', '300', '400','500', '900'], preload: false })
 
 export interface IFontsThemeObj {
     heading: string; 
