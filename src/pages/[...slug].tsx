@@ -1,24 +1,19 @@
-import styled from '@emotion/styled'
 import Hero from '../../libs/components/src/lib/Hero/Hero'
-import Video from '../../libs/components/src/lib/Video/Video'
-import { HeroTitle } from '../../libs/components/src/lib/Typography/Typography'
-import { IBaseProps } from '../../libs/components/src/types/common'
+import Header from '../../libs/components/src/lib/Header/Header'
+import Announcement from '../../libs/components/src/lib/Announcement/Announcement'
+import { IHeader } from '../../libs/components/src/lib/Header/Header.interface'
+import styled from '@emotion/styled'
 
-const StyledPTag: React.FC<React.PropsWithChildren<IBaseProps>> = styled('p')(
-    ({ theme: { colors }}) => ({
-        color: colors.primary
-    })
-)
 
-const Slug = () => {
+const StypedPTag: React.FC<React.PropsWithChildren<any>> = styled('p')({
+    color: 'pink'
+})
+const FeaturePanelComponent = (textForPTag) => {
     return (
-        <>
-        <StyledPTag>Hello</StyledPTag>
-        <Hero/>
-        {/* <Video></Video> */}
-        <HeroTitle>Hello</HeroTitle>
-        </>
+       <StypedPTag>
+            {textForPTag}
+       </StypedPTag>
     )
 }
 
-export default Slug
+export default FeaturePanelComponent

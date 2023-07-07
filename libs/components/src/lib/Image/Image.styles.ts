@@ -1,17 +1,19 @@
 import styled from "@emotion/styled";
 import Image from "next/image";
-import { Container } from "../Layout/Layout";
 import { INextImage } from "./Images.interface";
-import { ImageProps as NextImageProps } from "next/image";
+import { Box } from "../FlexBox/FlexBox";
 
-export const NextImageContainer = styled(Container)();
+export const NextImageContainer = styled(Box)({
+  width: "inherit",
+  height: "inherit",
+  overflow: "hidden",
+  position: "relative",
+});
 
-export const NextImage: React.FC<
-    React.PropsWithChildren<NextImageProps & INextImage>
-> = styled(Image)(({ type }) => ({
-    objectFit: "contain",
-    width: "100%",
-    position: "relative",
-    height: "unset",
-    filter: type && "brightness(50%)",
-}));
+export const NextImage: React.FC<React.PropsWithChildren<INextImage>> = styled(Image)(
+    ({ type }) => ({
+        position: "fixed",
+        objectFit: "cover",
+        filter: type && "brightness(50%)",
+    })
+);

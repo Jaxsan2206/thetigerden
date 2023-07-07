@@ -39,10 +39,6 @@ export interface IPageTitleProps extends IBoxProps {
    */
   size?: PageTitleSize | PageTitleSize[]
   /**
-   * Apply shadow style to text
-   */
-  shadow?: boolean;
-  /**
    * Font variant
    */
   variant?: Variant;
@@ -61,7 +57,6 @@ export interface ITextProps extends IBoxProps {
 
 interface IBaseTitleProps {
   secondaryFontWeight?: string;
-  hasSlash?: boolean;
 }
 
 export interface ITypographyObj {
