@@ -5,7 +5,7 @@ import ButtonWithLink from "../Button/Button";
 import Image from "../Image/Image";
 import { ImageWrapper, NavLink, Wrapper } from "./Header.style";
 
-const Header: React.FC<React.PropsWithChildren<IHeader>> = ({ links, image, cta }) => {
+const Header: React.FC<IHeader> = ({ links, image, cta }) => {
   return (
       <Wrapper>
         <Flex>
