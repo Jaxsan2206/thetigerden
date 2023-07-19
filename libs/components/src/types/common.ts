@@ -19,5 +19,5 @@ export interface IImageProps {
 export interface IButtonProps {
     label: string; 
     url: string; 
-    variant: Variant; 
+    variant?: Variant; 
 }
