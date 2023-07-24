@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { Box } from "../FlexBox/FlexBox";
+import { IBoxProps } from "../FlexBox/Flexbox.interface";
+import { IBaseProps } from "../../types/common";
 
-export const CardContainer: React.FC<any>=styled(Box)(
+export const CardContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
     ({theme: {colors, space}}) => ({
         backgroundColor: colors.secondary,
         borderRadius: space.small,
@@ -12,7 +14,7 @@ export const CardContainer: React.FC<any>=styled(Box)(
     })
 )
 
-export const UserContainer: React.FC<any>=styled(Box)(
+export const UserContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
     ({theme: {}}) => ({
     display: 'grid',
     gridTemplateColumns: '1fr 2.3fr',
@@ -25,7 +27,7 @@ export const UserContainer: React.FC<any>=styled(Box)(
     })
 )
 
-export const MessageContainer: React.FC<any>=styled(Box)(
+export const MessageContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
     ({theme: {}}) => ({
         justifyContent: 'center',
         height:'260px',
