@@ -11,3 +11,28 @@ export const CardContainer: React.FC<any>=styled(Box)(
         boxShadow: '0 4px 8px 0 rgba(0,0,0,0.5)'
     })
 )
+
+export const UserContainer: React.FC<any>=styled(Box)(
+    ({theme: {}}) => ({
+    display: 'grid',
+    gridTemplateColumns: '1fr 2.3fr',
+    left: '39.36%',
+    right: '1.17%',
+    top: '9.76%',
+    bottom: '53.93%',
+    marginLeft: '30px',
+    marginTop: '10px'
+    })
+)
+
+export const MessageContainer: React.FC<any>=styled(Box)(
+    ({theme: {}}) => ({
+        justifyContent: 'center',
+        height:'260px',
+        overflowY: 'auto',
+        marginTop: '10px',
+        textAlign: 'justify',
+       '*::-webkit-scrollbar': {width: '1px'},
+       '*::-webkit-scrollbar-track': {background: 'none'}
+    })
+)
