@@ -3,8 +3,6 @@ import { Box } from "../FlexBox/FlexBox";
 import React from "react";
 import { IBaseProps } from "../../types/common";
 
-
-
 export const Wrapper: React.FC<React.PropsWithChildren<IBaseProps>> = styled(Box)(
     ({ theme: { colors, space }}) => ({
         backgroundColor: colors.accent1, 
