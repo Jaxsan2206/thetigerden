@@ -5,6 +5,7 @@ import { IHeader } from "../../libs/components/src/lib/Header/Header.interface";
 import Footer from "../../libs/components/src/lib/Footer/Footer";
 import FeaturePanel from "../../libs/components/src/lib/FeaturePanel/FeaturePanel";
 import Tiles from "../../libs/components/src/lib/Tiles/Tiles";
+import Testimonial from "../../libs/components/src/lib/Testimonial/Testimonial";
 
 const headerProps: IHeader = {
   links: ["About Us", "Classes", "Timetable & Prices", "Contact Us"],
@@ -40,6 +41,7 @@ export default function Home() {
       <Announcement {...announcementProps}></Announcement>
       <FeaturePanel></FeaturePanel>
       <Tiles></Tiles>
+      <Testimonial></Testimonial>
       <Footer></Footer>
     </>
   );
