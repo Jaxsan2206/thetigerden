@@ -21,7 +21,7 @@ export const TextWrapper: React.FC<React.PropsWithChildren<IBaseProps & IColumnP
 export const FeaturePanelTitle: React.FC<React.PropsWithChildren<IBaseProps & IHeroTitleProps>> = styled(HeroTitle)(
     ({ theme: { space, colors }}) => ({
         paddingBottom: space.large, 
-        color: colors.accent1
+        color: colors.accent1, 
     })
 )
 
@@ -36,7 +36,7 @@ export const FeaturePanelText: React.FC<React.PropsWithChildren<IBaseProps & ITe
 export const StyledFlex: React.FC<React.PropsWithChildren<IBaseProps>> = styled(Flex)(
     ({ theme: { space }}) => ({
         flexWrap: 'wrap', 
-        paddingTop: space.xxxlarge, 
-        paddingBottom: space.xxxlarge
+        paddingTop: space.xlarge, 
+        paddingBottom: space.xlarge
     })
 )
