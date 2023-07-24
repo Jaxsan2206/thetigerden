@@ -7,6 +7,10 @@ import FeaturePanel from "../../libs/components/src/lib/FeaturePanel/FeaturePane
 import Tiles from "../../libs/components/src/lib/Tile/Tile";
 import { IFeaturePanelProps } from "../../libs/components/src/lib/FeaturePanel/FeaturePanel.interface";
 import { IFooterProps } from "../../libs/components/src/lib/Footer/Footer.interface";
+import TileGroup from "../../libs/components/src/lib/TileGroup/TileGroup";
+import Accordion from "../../libs/components/src/lib/Accordion/Accordion";
+import Gallery from "../../libs/components/src/lib/Gallery/Gallery";
+import { images } from "../../libs/components/src/lib/Gallery/test_data";
 
 const headerProps: IHeader = {
   links: ["About Us", "Classes", "Timetable & Prices", "Contact Us"],
@@ -97,6 +101,63 @@ const footerProps: IFooterProps = {
   ]
 }
 
+const tileProps = {
+  image: {
+    src: "https://images.ctfassets.net/c5iz9ysb7wxa/2GNKZfiVGLtEJGe1wu7oG9/4fcd24aa0849014b6111addd972b6b7c/IMG_0439_2.png", 
+    alt: "image1", 
+    type: "background-image"
+  }, 
+  hoverText: 'Hover Text', 
+  title: 'Muay Thai'
+}
+
+const tileGroupProps = {
+  tiles: [
+    {
+      image: {
+        src: "https://images.ctfassets.net/c5iz9ysb7wxa/2GNKZfiVGLtEJGe1wu7oG9/4fcd24aa0849014b6111addd972b6b7c/IMG_0439_2.png",
+        alt: "image1",
+        type: "background-image",
+      },
+      hoverText: "Hover Text",
+      title: "Boxing",
+    },
+    {
+      image: {
+        src: "https://images.ctfassets.net/c5iz9ysb7wxa/2GNKZfiVGLtEJGe1wu7oG9/4fcd24aa0849014b6111addd972b6b7c/IMG_0439_2.png",
+        alt: "image1",
+        type: "background-image",
+      },
+      hoverText: "Hover Text",
+      title: "Muay Thai",
+    },
+    {
+      image: {
+        src: "https://images.ctfassets.net/c5iz9ysb7wxa/2GNKZfiVGLtEJGe1wu7oG9/4fcd24aa0849014b6111addd972b6b7c/IMG_0439_2.png",
+        alt: "image1",
+        type: "background-image",
+      },
+      hoverText: "Hover Text",
+      title: "Jutjusu",
+    },
+    {
+      image: {
+        src: "https://images.ctfassets.net/c5iz9ysb7wxa/2GNKZfiVGLtEJGe1wu7oG9/4fcd24aa0849014b6111addd972b6b7c/IMG_0439_2.png",
+        alt: "image1",
+        type: "background-image",
+      },
+      hoverText: "Hover Text",
+      title: "Karate",
+    },
+  ],
+  title: 'CLASSES', 
+  cta: {
+    variant: 'secondary', 
+    label: 'More Classes', 
+    url: 'https://www.google.com'
+  }, 
+};
+
 export default function Home() {
   return (
     <>
@@ -104,7 +165,9 @@ export default function Home() {
       <Hero {...heroProps} />
       <Announcement {...announcementProps}></Announcement>
       <FeaturePanel {...featurePanelProps}></FeaturePanel>
-      <Tiles></Tiles>
+      <TileGroup {...tileGroupProps}/>
+      <Accordion></Accordion>
+      <Gallery images = {images} title="Gallery"/>
       <Footer {...footerProps}></Footer>
     </>
   );
