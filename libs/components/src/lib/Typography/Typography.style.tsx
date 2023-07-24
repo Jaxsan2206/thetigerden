@@ -22,7 +22,13 @@ export const BasePageTitle: React.FC<React.PropsWithChildren<IBaseProps & IPageT
   })
 ));
 
-export const BaseText: React.FC<React.PropsWithChildren<IBaseProps & ITextProps>> = styled(Box)();
+export const BaseText: React.FC<React.PropsWithChildren<IBaseProps & ITextProps>> = styled(Box)(
+  ({ theme: { textStyles } }) => (
+    variant({
+      prop: 'size', 
+      variants: textStyles.textSize
+    })
+));
 
 export const BaseCaption: React.FC<React.PropsWithChildren<ITextProps>> = styled(BaseText)({
   fontWeight: 'bold',

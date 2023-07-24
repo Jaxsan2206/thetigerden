@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import { PropsWithChildren } from "react";
 import { IBaseProps } from "../../types/common";
-import { HeroTitle } from "../Typography/Typography";
+import { HeroTitle, Text } from "../Typography/Typography";
 import { Box } from "../FlexBox/FlexBox";
 import { IBoxProps } from "../FlexBox/Flexbox.interface";
 import { IHeroProps } from "../Hero/Hero.interface";
+import { ITextProps } from "../Typography/Typography.interface";
 
 
 export const TileWrapper: React.FC<PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)(
@@ -33,7 +34,6 @@ export const TileTitle: React.FC<PropsWithChildren<IHeroProps & IBaseProps>> = s
       fontWeight: 500, 
       color: colors.white, 
 
-
       transition: 'opacity 0.3s ease, transform 0.3s ease', 
       zIndex: 1, 
       opacity: 1
@@ -41,7 +41,7 @@ export const TileTitle: React.FC<PropsWithChildren<IHeroProps & IBaseProps>> = s
 );
 
 
-export const HoverTitle: React.FC<PropsWithChildren<IHeroProps & IBaseProps>> = styled(HeroTitle)(
+export const HoverTitle: React.FC<PropsWithChildren<ITextProps & IBaseProps>> = styled(Text)(
     ({ theme: { colors }}) => ({
         position: 'absolute', 
         top: '50%',
