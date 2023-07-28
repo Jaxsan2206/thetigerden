@@ -1,4 +1,3 @@
-// pages/api/payment_intents.ts
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
@@ -13,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
-        currency: 'usd',
+        currency: 'gbp', 
       });
 
       res.status(200).send(paymentIntent.client_secret);
