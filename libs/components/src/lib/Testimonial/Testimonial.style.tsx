@@ -10,7 +10,8 @@ export const CardContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
         padding: space.base,
         width: '343px',
         height: '369px',
-        boxShadow: '0 4px 8px 0 rgba(0,0,0,0.5)'
+        boxShadow: '0 2px 8px 0 rgba(0,0,0,0.5)'
+        // REMOVE BOX SHADOW AFTER CAROUSEL IS IMPLEMENTED
     })
 )
 
