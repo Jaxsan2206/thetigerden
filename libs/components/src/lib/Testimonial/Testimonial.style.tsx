@@ -15,26 +15,39 @@ export const CardContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
 )
 
 export const UserContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
-    ({theme: {}}) => ({
-    display: 'grid',
-    gridTemplateColumns: '1fr 2.3fr',
-    left: '39.36%',
-    right: '1.17%',
-    top: '9.76%',
-    bottom: '53.93%',
-    marginLeft: '30px',
-    marginTop: '10px'
+    ({theme: {space}}) => ({
+        display: 'flex',
+        alignItems: 'center',
+        paddingBottom: space.small
+    })
+)
+
+export const UserIcon: React.FC<IBoxProps & IBaseProps>=styled(Box)(
+    ({theme: {space}}) => ({
+        width: space.xxxlarge,
+        height: space.xxxlarge,
+        paddingLeft: space.small
+    })
+)
+
+export const UserInformation: React.FC<IBoxProps & IBaseProps>=styled(Box)(
+    ({theme: {space}}) => ({
+        display: 'flex',
+        flexDirection: 'column',
+        paddingLeft: space.base
     })
 )
 
 export const MessageContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
-    ({theme: {}}) => ({
+    ({theme: {space, colors}}) => ({
         justifyContent: 'center',
-        height:'260px',
+        paddingLeft: space.medium,
+        paddingRight: space.medium,
+        height: '75%',
         overflowY: 'auto',
-        marginTop: '10px',
         textAlign: 'justify',
-       '*::-webkit-scrollbar': {width: '1px'},
-       '*::-webkit-scrollbar-track': {background: 'none'}
+       '::-webkit-scrollbar': {width: space.small},
+       '::-webkit-scrollbar-track': {background: colors.none},
+       '::-webkit-scrollbar-thumb': {backgroundColor: colors.greydark, borderRadius: space.small}
     })
 )
