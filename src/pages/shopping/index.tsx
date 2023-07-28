@@ -1,8 +1,7 @@
-//  For testing
-//  use 4242 4242 4242 4242 as the card number,
-//  any future date for the expiration, 
-//  any 3 digit number for the CVC,
-//  and any 5 digit number for the ZIP.
+//  For testing - use these card numbers with any other details
+// Successful payment: 4242424242424242 
+// Failed payment:     4000000000009995
+// Requires auth:      4000002500003155
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useState, useEffect } from 'react';
