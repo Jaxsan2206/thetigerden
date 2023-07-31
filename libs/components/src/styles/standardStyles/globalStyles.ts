@@ -16,7 +16,18 @@ export const globalStyles: SerializedStyles = css(
         // https://www.w3schools.com/css/css3_box-sizing.asp
         '*':{
             boxSizing: 'border-box'
-        }, 
+        },
+
+        '.slick-prev:before, .slick-next:before': {
+            fontSize: '25px !important',
+            color: 'black !important'
+          },
+          '.slick-prev:before': {
+            content: '"←"'
+          },
+          '.slick-next:before': {
+            content: '">"'
+          },
 
         html: {
             // Setting 1 rem = 10 px
