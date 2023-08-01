@@ -195,7 +195,7 @@ const dummyData = [{
     src: "https://i.etsystatic.com/20164836/r/il/bd77b8/3943923229/il_fullxfull.3943923229_ebhm.jpg",
     alt: "user profile picutre"
   }, 
-  username: "Bubbles",
+  username: "Bibbles",
   date: "30.07.2023",
   message: 
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -211,9 +211,9 @@ export default function Home() {
       <TileGroup {...tileGroupProps}/>
       <Accordion></Accordion>
       <Gallery images = {images}/>
-      <Carousel>
+      <Carousel title={"TESTIMONIALS"}>
         {dummyData.map((data)=>{
-          return <Testimonial {...data}></Testimonial>
+          return <Testimonial {...data} ></Testimonial>
         })}
       </Carousel>
       <Footer {...footerProps}></Footer>

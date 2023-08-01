@@ -22,12 +22,25 @@ export const globalStyles: SerializedStyles = css(
             fontSize: '25px !important',
             color: 'black !important'
           },
-          '.slick-prev:before': {
-            content: '"←"'
+          '.slick-prev': {
+            width: '25px !important',
+            height: '25px !important'
           },
-          '.slick-next:before': {
-            content: '">"'
+          '.slick-next': {
+            width: '25px !important',
+            height: '25px !important'
           },
+          '.slider': {
+            padding: '1%'
+          },
+        'slick-slide' :{
+            margin: '0 27px'
+        }, 
+
+        'slick-list' :{
+            margin: '0 -27px'
+        }, 
+          
 
         html: {
             // Setting 1 rem = 10 px

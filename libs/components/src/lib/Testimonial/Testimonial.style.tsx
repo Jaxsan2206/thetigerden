@@ -10,8 +10,6 @@ export const CardContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
         padding: space.base,
         width: '343px',
         height: '369px',
-        // boxShadow: '0 2px 8px 0 rgba(0,0,0,0.5)'
-        // REMOVE BOX SHADOW AFTER CAROUSEL IS IMPLEMENTED
     })
 )
 
@@ -46,7 +44,7 @@ export const MessageContainer: React.FC<IBoxProps & IBaseProps>=styled(Box)(
         paddingRight: space.medium,
         height: '75%',
         overflowY: 'auto',
-        textAlign: 'justify',
+        // textAlign: 'justify',
        '::-webkit-scrollbar': {width: space.small},
        '::-webkit-scrollbar-track': {background: colors.none},
        '::-webkit-scrollbar-thumb': {backgroundColor: colors.greydark, borderRadius: space.small}
