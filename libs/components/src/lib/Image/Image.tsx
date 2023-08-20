@@ -1,17 +1,16 @@
 import React from "react";
-import { NextImage, NextImageContainer } from "./Image.styles";
 import { IImageProps } from "../../types/common";
+import { Box } from "../FlexBox/FlexBox";
 
 const Image: React.FC<IImageProps> = ({ src, alt, type, ...rest }) => {
   return (
-    <NextImageContainer {...rest}>
-      <NextImage
-        fill = {true}
+      <Box
+        as="img"
         src={src}
         alt={alt}
-        type={type as string}
+        style={{ filter: type && "brightness(50%)"}}
+        {...rest}
       />
-    </NextImageContainer>
   );
 };
 

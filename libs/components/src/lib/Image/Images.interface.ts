@@ -1,6 +1,6 @@
-import { ImageProps as NextImageProps } from "next/image";
+import { IBoxProps } from "../FlexBox/Flexbox.interface";
 
 
-export interface INextImage extends NextImageProps {
+export interface INextImage extends IBoxProps {
     type: string; 
 }

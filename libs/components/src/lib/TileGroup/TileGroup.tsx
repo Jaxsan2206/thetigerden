@@ -5,28 +5,29 @@ import { ITheme } from "../../styles/theme";
 import Tile from "../Tile/Tile";
 import { Flex } from "../FlexBox/FlexBox";
 import ButtonWithLink from "../Button/Button";
-import { GroupTitle } from "./TileGroup.style";
+import { GroupTitle, StyledColumn } from "./TileGroup.style";
+import { useWindowWidth } from "../../../../hooks";
 
 const TileGroup: React.FC<React.PropsWithChildren<any>> = ({
   tiles,
   title,
   cta,
 }) => {
-  const { colors } = useTheme() as ITheme;
+  const { colors, breakpoints } = useTheme() as ITheme;
+  const width = useWindowWidth(); 
+  const isMobileNav = 0 < width && width <= parseInt(breakpoints[2]);
   return (
     <Container fullWidth backgroundColor={colors.offwhite}>
       <Container>
-        <GroupTitle>{title}</GroupTitle>
+        <GroupTitle size={isMobileNav ? 'small' : 'medium'}>{title}</GroupTitle>
         <Flex flexWrap={"wrap"}>
           {tiles.map((tile: any, i: number) => (
-            <Column
+            <StyledColumn
               key={i}
-              width={[12, null, null, 6]}
-              paddingRight={"16px"}
-              paddingBottom={"16px"}
+              width={[12, null, 6, null]}
             >
               <Tile {...tile} />
-            </Column>
+            </StyledColumn>
           ))}
         </Flex>
         <Flex paddingBottom={"large"} justifyContent={"center"}>

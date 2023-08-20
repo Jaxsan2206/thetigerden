@@ -7,8 +7,10 @@ import { HeroTitle } from "../Typography/Typography";
 import { IHeroTitleProps } from "../Typography/Typography.interface";
 
 export const Wrapper: React.FC<React.PropsWithChildren<IBaseProps & IBoxProps>> = styled(Box)(
-    ({ theme: { colors } }) => ({
-        backgroundColor: colors.black
+    ({ theme: { colors, space } }) => ({
+        backgroundColor: colors.black,
+        paddingTop: space.xlarge, 
+        paddingBottom: space.xlarge
     })
 )
 
@@ -16,7 +18,6 @@ export const AccordionTitle: React.FC<React.PropsWithChildren<IBaseProps & IHero
     ({ theme: { space, colors }}) => ({
         paddingBottom: space.large, 
         color: colors.accent1, 
-        wordSpacing: '100vw', 
     })
 )
 

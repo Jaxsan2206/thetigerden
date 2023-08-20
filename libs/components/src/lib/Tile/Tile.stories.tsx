@@ -4,7 +4,7 @@ import Tile from "./Tile";
 import type { Meta, StoryObj } from "@storybook/react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof Image> = {
+const meta: Meta<typeof Tile> = {
   title: "Components/Tile",
   component: Tile,
   tags: ["autodocs"],
@@ -26,7 +26,7 @@ const meta: Meta<typeof Image> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Image>;
+type Story = StoryObj<typeof Tile>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 

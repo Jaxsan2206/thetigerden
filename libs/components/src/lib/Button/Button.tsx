@@ -2,20 +2,19 @@ import React from "react";
 import { StyledButton } from "./Button.style";
 import Link from "next/link";
 
-const withLink = (Component: React.FC) => {
-  return function WrappedComponent(props: any) {
-    const { href, ...rest } = props;
+const withLink = (BaseComponent) => ({ href, ...rest}) => {
+ 
     return href ? (
       <Link href={href}>
-        <Component {...rest} />
+        <BaseComponent {...rest} />
       </Link>
     ) : (
-      <Component {...rest} />
+      <BaseComponent {...rest} />
     );
-  };
+
 };
 
-const Button: React.FC<React.PropsWithChildren<any>> = ({
+const Button: React.FC<React.PropsWithChildren<any>> = withLink(({
   variant,
   children,
   ...rest
@@ -23,8 +22,8 @@ const Button: React.FC<React.PropsWithChildren<any>> = ({
   <StyledButton as={"button"} variant={variant} {...rest}>
     {children}
   </StyledButton>
-);
+));
 
-const ButtonWithLink = withLink(Button);
+// const ButtonWithLink = withLink(Button);
 
-export default ButtonWithLink;
+export default Button;

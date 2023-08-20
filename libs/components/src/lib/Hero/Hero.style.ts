@@ -17,20 +17,17 @@ export const Wrapper = styled(Box)({
 
 export const PrimaryHeading: React.FC<PropsWithChildren<IBaseProps & IHeroTitleProps>> = styled(HeroTitle)(
   ({ theme: { colors }}) => ({
-    position: "absolute",
-
-    right: '50%', 
-    top: "36.5%",
     color: colors.secondary, 
   })
 );
 
 export const SecondaryHeading: React.FC<PropsWithChildren<IBaseProps & IHeroTitleProps>> = styled(HeroTitle)(
-  ({ theme: { colors }}) => ({
-    position: "absolute",
-    left: "45%",
-    top: "50%",
+  ({ theme: { colors, mediaQueries }}) => ({
     color: colors.accent1, 
+    [mediaQueries.medium]: {
+      paddingLeft: '200px', 
+      textWrap: 'nowrap'
+    }
   })
 );
 
@@ -39,4 +36,11 @@ export const HeroVideo = styled(ReactPlayer)({
   video: {
     objectFit: "cover",
   },
+});
+
+export const HeadingContainer = styled(Box)({
+  position: 'absolute', 
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
 });

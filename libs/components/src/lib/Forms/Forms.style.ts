@@ -1,14 +1,14 @@
-import styled from "@emotion/styled";
-import { IBaseProps } from "../../types/common";
-import { Box, Flex } from "../FlexBox/FlexBox";
-import { Column } from "../Layout/Layout";
-import { IColumnProps } from "../Layout/Layout.interface";
-import { HeroTitle, Text } from "../Typography/Typography";
-import { IHeroTitleProps, ITextProps } from "../Typography/Typography.interface";
+import styled from "@emotion/styled"
+import { IBaseProps } from "../../types/common"
+import { Box, Flex } from "../FlexBox/FlexBox"
+import { Column } from "../Layout/Layout"
+import { IColumnProps } from "../Layout/Layout.interface"
+import { HeroTitle, Text } from "../Typography/Typography"
+import { IHeroTitleProps, ITextProps } from "../Typography/Typography.interface"
 
 export const Wrapper: React.FC<React.PropsWithChildren<IBaseProps>> = styled(Box)(
     ({ theme: {colors }}) => ({
-        backgroundColor: colors.offblack 
+        backgroundColor: colors.offwhite 
     })
 )
 
@@ -23,17 +23,18 @@ export const TextWrapper: React.FC<React.PropsWithChildren<IBaseProps & IColumnP
     })
 )
 
-export const FeaturePanelTitle: React.FC<React.PropsWithChildren<IBaseProps & IHeroTitleProps>> = styled(HeroTitle)(
+
+export const FormsTitle: React.FC<React.PropsWithChildren<IBaseProps & IHeroTitleProps>> = styled(HeroTitle)(
     ({ theme: { space, colors }}) => ({
         paddingBottom: space.large, 
-        color: colors.accent1, 
+        color: colors.black, 
     })
 )
 
-export const FeaturePanelText: React.FC<React.PropsWithChildren<IBaseProps & ITextProps>> = styled(Text)(
+export const FormsText: React.FC<React.PropsWithChildren<IBaseProps & ITextProps>> = styled(Text)(
     ({ theme: { space, colors }}) => ({
         paddingBottom: space.large, 
-        color: colors.secondary, 
+        color: colors.black, 
     })
 )
 
