@@ -4,6 +4,7 @@ import Announcement from "../../libs/components/src/lib/Announcement/Announcemen
 import { IHeader } from "../../libs/components/src/lib/Header/Header.interface";
 import Footer from "../../libs/components/src/lib/Footer/Footer";
 import FeaturePanel from "../../libs/components/src/lib/FeaturePanel/FeaturePanel";
+import Testimonial from "../../libs/components/src/lib/Testimonial/Testimonial";
 import Tiles from "../../libs/components/src/lib/Tile/Tile";
 import { IFeaturePanelProps } from "../../libs/components/src/lib/FeaturePanel/FeaturePanel.interface";
 import { IFooterProps } from "../../libs/components/src/lib/Footer/Footer.interface";
@@ -11,6 +12,7 @@ import TileGroup from "../../libs/components/src/lib/TileGroup/TileGroup";
 import Accordion from "../../libs/components/src/lib/Accordion/Accordion";
 import Gallery from "../../libs/components/src/lib/Gallery/Gallery";
 import { images } from "../../libs/components/src/lib/Gallery/test_data";
+import Carousel from "../../libs/components/src/lib/Carousel/Carousel";
 
 const headerProps: IHeader = {
   links: ["About Us", "Classes", "Timetable & Prices", "Contact Us"],
@@ -156,7 +158,48 @@ const tileGroupProps = {
     label: 'More Classes', 
     url: 'https://www.google.com'
   }, 
-};
+}
+
+const dummyData = [{
+  userImage: {
+    src: "https://i.etsystatic.com/20164836/r/il/bd77b8/3943923229/il_fullxfull.3943923229_ebhm.jpg",
+    alt: "user profile picutre"
+  }, 
+  username: "Barbie",
+  date: "30.07.2023",
+  message: 
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+},
+{
+  userImage: {
+    src: "https://i.etsystatic.com/20164836/r/il/bd77b8/3943923229/il_fullxfull.3943923229_ebhm.jpg",
+    alt: "user profile picutre"
+  }, 
+  username: "Ken",
+  date: "30.07.2023",
+  message: 
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+},
+{
+  userImage: {
+    src: "https://i.etsystatic.com/20164836/r/il/bd77b8/3943923229/il_fullxfull.3943923229_ebhm.jpg",
+    alt: "user profile picutre"
+  }, 
+  username: "Allen",
+  date: "30.07.2023",
+  message: 
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}, 
+{
+  userImage: {
+    src: "https://i.etsystatic.com/20164836/r/il/bd77b8/3943923229/il_fullxfull.3943923229_ebhm.jpg",
+    alt: "user profile picutre"
+  }, 
+  username: "Bibbles",
+  date: "30.07.2023",
+  message: 
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+}]
 
 export default function Home() {
   return (
@@ -167,8 +210,15 @@ export default function Home() {
       <FeaturePanel {...featurePanelProps}></FeaturePanel>
       <TileGroup {...tileGroupProps}/>
       <Accordion></Accordion>
-      <Gallery images = {images} title="Gallery"/>
+      <Gallery images = {images}/>
+      <Carousel title={"TESTIMONIALS"}>
+        {dummyData.map((data)=>{
+          return <Testimonial {...data} ></Testimonial>
+        })}
+      </Carousel>
       <Footer {...footerProps}></Footer>
     </>
   );
 }
+
+

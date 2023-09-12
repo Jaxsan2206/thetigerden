@@ -16,7 +16,31 @@ export const globalStyles: SerializedStyles = css(
         // https://www.w3schools.com/css/css3_box-sizing.asp
         '*':{
             boxSizing: 'border-box'
+        },
+
+        '.slick-prev:before, .slick-next:before': {
+            fontSize: '25px !important',
+            color: 'black !important'
+          },
+          '.slick-prev': {
+            width: '25px !important',
+            height: '25px !important'
+          },
+          '.slick-next': {
+            width: '25px !important',
+            height: '25px !important'
+          },
+          '.slider': {
+            padding: '1%'
+          },
+        'slick-slide' :{
+            margin: '0 27px'
         }, 
+
+        'slick-list' :{
+            margin: '0 -27px'
+        }, 
+          
 
         html: {
             // Setting 1 rem = 10 px
