@@ -13,17 +13,8 @@ export const TileWrapper: React.FC<PropsWithChildren<IBoxProps & IBaseProps>> = 
     color: colors.accent1, 
     position: 'relative', 
     height: '100%',
-    [` > ${TileTitle}`]:{
-      transform: 'translate(-50%, -100%)', 
-      opacity: 0,
-      color: 'black'
-     },
-    // ':hover':{
-      //  '> :nth-child(1)':{
-      //   transform: 'translate(-50%, -100%)', 
-      //   opacity: 0
-      //  },
-       [`&:hover ${TileTitle}`]:{
+    ':hover':{
+       '> :nth-child(1)':{
         transform: 'translate(-50%, -100%)', 
         opacity: 0
        },
@@ -33,7 +24,7 @@ export const TileWrapper: React.FC<PropsWithChildren<IBoxProps & IBaseProps>> = 
         zIndex: 1
        }, 
     }
-  // }
+  }
   )
 );
 
