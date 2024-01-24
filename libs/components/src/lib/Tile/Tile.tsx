@@ -1,11 +1,11 @@
 import React from "react";
-import Image from "../Image/Image";
-import { HoverTitle, StyledImage, TileTitle, TileWrapper } from "./Tile.styles";
+import { HoverText, StyledImage, TileTitle, TileWrapper } from "./Tile.styles";
 import { useTheme } from "@emotion/react";
 import { useWindowWidth } from "../../../../hooks";
 import { ITheme } from "../../styles/theme";
+import { ITileProps } from "./Tile.interface";
 
-const Tile: React.FC<React.PropsWithChildren<any>> = ({
+const Tile: React.FC<React.PropsWithChildren<ITileProps>> = ({
   image,
   title,
   hoverText,
@@ -16,7 +16,7 @@ const Tile: React.FC<React.PropsWithChildren<any>> = ({
   return (
     <TileWrapper>
       <TileTitle>{title}</TileTitle>
-      <HoverTitle size={isMobileNav? "large" : "xxlarge"}>{hoverText}</HoverTitle>
+      <HoverText size={isMobileNav? "large" : "xxlarge"}>{hoverText}</HoverText>
       <StyledImage {...image} height={'100%'}  />
     </TileWrapper>
   );

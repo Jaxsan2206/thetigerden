@@ -1,17 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Box, Flex } from "../FlexBox/FlexBox";
-import { IHeader } from "./Header.interface";
-import ButtonWithLink from "../Button/Button";
-import Image from "../Image/Image";
+import { IHeaderProps } from "./Header.interface";
 import {
-  BurgerLines,
-  CartWrapper,
-  ImageContainer,
-  LinksWrapper,
+  CartContainer,
+  DesktopContainer,
+  LinksContainer,
   Logo,
-  MobileWrapper,
+  LogoContainer,
+  MobileContainer,
   NavLink,
-  StyledBurger,
   Wrapper,
 } from "./Header.style";
 import { useWindowWidth } from "../../../../hooks";
@@ -19,8 +15,16 @@ import { useTheme } from "@emotion/react";
 import { ITheme } from "../../styles/theme";
 import { ILinkProps } from "../Link/Link.interface";
 import Button from "../Button/Button";
+import Burger from "./Burger/Burger";
 
-const Header: React.FC<IHeader> = ({ links, image, mobileImage,  cta }) => {
+//https://codepen.io/nodws/pen/mdQoEB
+
+const Header: React.FC<IHeaderProps> = ({
+  links,
+  desktopLogo,
+  mobileLogo,
+  showCart,
+}) => {
   const [open, setOpen] = useState(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
 
@@ -33,57 +37,56 @@ const Header: React.FC<IHeader> = ({ links, image, mobileImage,  cta }) => {
   }, [open]);
 
   const isMobileNav = width <= parseInt(breakpoints[breakpoints.length - 1]);
-  const imageProps = isMobileNav ? mobileImage: image
+  const imageProps = isMobileNav ? mobileLogo : desktopLogo;
 
   const getContentHeight = (element: HTMLElement | null) => {
     return element ? element.scrollHeight : 0;
   };
 
   return (
-    <>
-      <Wrapper>
-        <ImageContainer  >
-          <Logo  {...imageProps}/>
-        </ImageContainer>
+    <Wrapper>
+      <DesktopContainer>
+        <LogoContainer>
+            <Logo href={'/'} {...imageProps} />
+        </LogoContainer>
         <Burger openCallBack={setOpen} openState={open} />
         {!isMobileNav && (
-          <LinksWrapper>
+          <LinksContainer>
             {links.map((el: ILinkProps, i: number) => (
               <NavLink key={i} href={el.href as string}>
                 {el.label}
               </NavLink>
             ))}
-          </LinksWrapper>
+          </LinksContainer>
         )}
-        <CartWrapper>
-        <Button variant={cta.variant} href={cta.url}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg>
-        </Button>
-        </CartWrapper>
-      </Wrapper>
-      {isMobileNav && <MobileWrapper open={open} contentHeight={contentHeight} ref={contentRef}>
-        {links.map((el: ILinkProps, i: number) => (
-          <NavLink key={i} href={el.href as string}>
-            {el.label}
-          </NavLink>
-        ))}
-      </MobileWrapper>}
-    </>
+        {showCart && (
+          <CartContainer>
+            <Button
+              variant={"primary"}
+              icon={{ name: "ShoppingCart", iconPosition: "end" }}
+              disabled
+            />
+          </CartContainer>
+        )}
+      </DesktopContainer>
+      {isMobileNav && (
+        <MobileContainer
+          open={open}
+          contentHeight={contentHeight}
+          ref={contentRef}
+        >
+          {/* TODO: Mobile Container needs Jesus to come down and style it */}
+          {links.map((el: ILinkProps, i: number) => (
+            <NavLink key={i} href={el.href as string}>
+              {el.label}
+            </NavLink>
+          ))}
+        </MobileContainer>
+        )}
+    </Wrapper>
   );
 };
 
-const Burger = ({
-  openCallBack,
-  openState,
-}: {
-  openCallBack: (state: boolean) => void;
-  openState: boolean;
-}) => (
-  <StyledBurger open={openState} onClick={() => openCallBack(!openState)}>
-    <BurgerLines />
-    <BurgerLines />
-    <BurgerLines />
-  </StyledBurger>
-);
+
 
 export default Header;

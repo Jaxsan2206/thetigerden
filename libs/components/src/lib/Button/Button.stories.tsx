@@ -27,3 +27,14 @@ export const Secondary: Story = {
     href: "https://www.google.com",
   },
 };
+
+export const Icon: Story = {
+  args: {
+    variant: "primary",
+    href: "https://www.google.com",
+    icon: {
+      name: 'ShoppingCart',
+      iconPosition: 'end'
+    }
+  },
+};

@@ -5,7 +5,6 @@ import NextLink from "../Link/Link";
 import { Box } from "../FlexBox/FlexBox";
 
 const Products: React.FC<any> = ({ products }) => {
-  console.log(products);
   return (
     <Grid>
       {products.map((product) => (

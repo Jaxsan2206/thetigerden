@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Gallery } from "react-grid-gallery";
 import { Container } from "../Layout/Layout";
 import { CustomImage } from "./test_data";

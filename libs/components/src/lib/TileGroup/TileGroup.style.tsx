@@ -13,15 +13,8 @@ export const GroupTitle: React.FC<React.PropsWithChildren<IBaseProps & IHeroTitl
     })
 )
 
-
 export const StyledColumn: React.FC<React.PropsWithChildren<IBaseProps & IColumnProps>> = styled(Column)(
-    ({ theme: { space, colors, mediaQueries }}) => ({
-        paddingRight: "16px", 
-        paddingBottom: "16px", 
-
-        [mediaQueries.untilMedium]:{
-            paddingRight: 0
-
-        }
+    ({ theme: { space }}) => ({
+        paddingBottom: space.large
     })
 )

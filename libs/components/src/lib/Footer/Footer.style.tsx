@@ -1,59 +1,40 @@
-import styled from "@emotion/styled";
-import NextLink from "../Link/Link";
-import { ILinkProps } from "../Link/Link.interface";
-import { LinkProps } from "next/link";
-import { IBaseProps } from "../../types/common";
-import { Column, Container } from "../Layout/Layout";
-import { IColumnProps, IContainerProps } from "../Layout/Layout.interface";
-import { IPageTitleProps } from "../Typography/Typography.interface";
-import { PageTitle } from "../Typography/Typography";
-
-//TODO: Fix the Interfaces here
-export const FooterLinks: React.FC<React.PropsWithChildren<ILinkProps & LinkProps & IBaseProps>> = styled(NextLink)(
-    ({ theme: { space }}) => ({
-        lineHeight: space.large,  
-        paddingTop: space.xsmall, 
-    })
-)
+import styled from "@emotion/styled"
+import { IBaseProps } from "../../types/common"
+import { Flex } from "../FlexBox/FlexBox"
+import { Container, Grid, Column } from "../Layout/Layout"
+import { IContainerProps, IColumnProps } from "../Layout/Layout.interface"
+import { ITextProps } from "../Typography/Typography.interface"
+import { Text } from "../Typography/Typography"
 
 export const FooterWrapper: React.FC<React.PropsWithChildren<IContainerProps & IBaseProps>> = styled(Container)(
+    ({ theme: { space, colors }}) => ({
+        paddingTop: space.large, 
+        paddingBottom: space.large,
+        backgroundColor: colors.offwhite
+    })
+  )
+  
+  export const StyledGrid: React.FC<React.PropsWithChildren<IContainerProps & IBaseProps>> = styled(Grid)(
     ({ theme: { space }}) => ({
-        paddingTop: space.xlarge, 
-        paddingBottom: space.xlarge, 
-        display: 'flex', 
-        flexWrap: 'wrap'
+        rowGap: space.large
     })
-)
-
-export const ImageColumn: React.FC<React.PropsWithChildren<IColumnProps & IBaseProps>> = styled(Column)(
-    ({ theme: {}}) => ({
-        display: 'flex', 
-        flexDirection: 'column'
-    })
-)
-
-export const LinksColumn: React.FC<React.PropsWithChildren<IColumnProps & IBaseProps>> = styled(Column)(
+  )
+  
+  export const FooterColumn: React.FC<React.PropsWithChildren<IColumnProps & IBaseProps>> = styled(Column)(
     ({ theme: { space }}) => ({
-        flexDirection: "column", 
-        display: "flex", 
-        paddingLeft: space.medium, 
-        paddingRight: space.medium
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: space.small
     })
-)
-
-export const LinksColumnTitle: React.FC<React.PropsWithChildren<IPageTitleProps & IBaseProps>> = styled(PageTitle)(
+  )
+  
+  export const SocialMediaWrapper: React.FC<React.PropsWithChildren<IColumnProps & IBaseProps>> = styled(Flex)(
     ({ theme: { space }}) => ({
-        paddingBottom: space.base, 
-        size: 'medium', 
-        fontWeight: 600
+        gap: space.xsmall
     })
-)
-
-export const ButtonColumn: React.FC<React.PropsWithChildren<IColumnProps & IBaseProps>> = styled(Column)(
-    ({ theme: { space }}) => ({
-        flexDirection: "column", 
-        display:"flex", 
-        height: space.xxxxlarge, 
-        alignItems: "center"
-    })
-)
+  )
+  
+  export const ColumnTitle: React.FC<React.PropsWithChildren<ITextProps & IBaseProps>> = styled(Text)({
+      fontWeight: 500,
+  })

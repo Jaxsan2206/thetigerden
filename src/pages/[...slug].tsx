@@ -1,38 +1,25 @@
-import Hero from "../../libs/components/src/lib/Hero/Hero";
-import Header from "../../libs/components/src/lib/Header/Header";
-import Announcement from "../../libs/components/src/lib/Announcement/Announcement";
-import { IHeader } from "../../libs/components/src/lib/Header/Header.interface";
-import styled from "@emotion/styled";
-import { IBaseProps } from "../../libs/components/src/types/common";
-import { GetServerSideProps } from "next/types";
+import styled from '@emotion/styled';
+import { ComponentGenerator } from '../../libs/services/contentful/ComponentGenerator';
+import ContentfulService from '../../libs/services/contentful/contentful.service';
+import { Box } from '../../libs/components/src/lib/FlexBox/FlexBox';
 
-import { createClient } from 'contentful';
-import ComponentGenerator from "../../libs/services/contentful/ComponentGenerator";
-
-
-
-const FeaturePanelComponent = ({ content }) => {
-  return content.map(el => <ComponentGenerator content = {el}/>)
+const TemplateLandingPage = ({ content }) => {
+  return content.map((el, i ) => <ComponentGenerator key={i} content = {el}/>)
 };
+
+
 
 export const getServerSideProps = async ({ query }: any) => {
 
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_ID as string,
-    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
-  });
-
-  const response = await client.getEntries({
-    content_type: 'templateLandingPage',
-    'fields.slug[in]': query.slug.join('/'),
-  });
-
-
+  const contentfulService = new ContentfulService();
+  const { headerProps, footerProps, content } = await contentfulService.getTemplateLandingPage(query.slug)
   return { 
     props: {
-      content: response.items[0].fields.content
+      headerProps,
+      content: content || null,
+      footerProps
    } 
   }
 }
 
-export default FeaturePanelComponent;
+export default TemplateLandingPage;

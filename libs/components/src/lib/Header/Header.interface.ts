@@ -1,10 +1,11 @@
-import { IButtonProps, IImageProps } from "../../types/common";
+import { IImageProps } from "../../types/common";
 import { ILinkProps } from "../Link/Link.interface";
 
-export interface IHeader {
+export interface IHeaderProps {
     links: ILinkProps[];
-    image: IImageProps; 
-    cta: IButtonProps; 
+    desktopLogo: IImageProps; 
+    mobileLogo: IImageProps;
+    showCart: boolean;
 }
 
 export interface IMobileWrapper {
