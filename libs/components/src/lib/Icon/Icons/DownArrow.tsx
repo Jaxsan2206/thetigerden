@@ -12,9 +12,9 @@ const DownArrow = ({ size = "24", color = "#000000" }) => {
       <path
         d="M7 10L12 15L17 10"
         stroke={color}
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

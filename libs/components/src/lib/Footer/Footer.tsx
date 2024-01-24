@@ -60,14 +60,14 @@ const Footer: React.FC<IFooterProps> = ({ columns, image, cta, instagram, tiktok
                   <NextLink key={i} href={link.href} children={link.label} />
                 );
               } else {
-                return <Text size={"small"}>{link.label}</Text>;
+                return <Text key={i} size={"small"}>{link.label}</Text>;
               }
             })}
           </FooterColumn>
         ))}
         <FooterColumn width={[12, null, 3]}>
-          <ButtonWithLink variant={cta.variant} href={cta.url}>
-            {cta.label}
+          <ButtonWithLink variant={cta?.variant} href={cta?.url}>
+            {cta?.label}
           </ButtonWithLink>
         </FooterColumn>
       </StyledGrid>

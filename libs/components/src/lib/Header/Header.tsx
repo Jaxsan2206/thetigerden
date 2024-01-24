@@ -20,7 +20,7 @@ import Burger from "./Burger/Burger";
 //https://codepen.io/nodws/pen/mdQoEB
 
 const Header: React.FC<IHeaderProps> = ({
-  links,
+  links = [],
   desktopLogo,
   mobileLogo,
   showCart,
@@ -52,7 +52,7 @@ const Header: React.FC<IHeaderProps> = ({
         <Burger openCallBack={setOpen} openState={open} />
         {!isMobileNav && (
           <LinksContainer>
-            {links.map((el: ILinkProps, i: number) => (
+            {!!links?.length && links?.map((el: ILinkProps, i: number) => (
               <NavLink key={i} href={el.href as string}>
                 {el.label}
               </NavLink>
@@ -76,7 +76,7 @@ const Header: React.FC<IHeaderProps> = ({
           ref={contentRef}
         >
           {/* TODO: Mobile Container needs Jesus to come down and style it */}
-          {links.map((el: ILinkProps, i: number) => (
+          {!!links?.length && links.map((el: ILinkProps, i: number) => (
             <NavLink key={i} href={el.href as string}>
               {el.label}
             </NavLink>
