@@ -1,3 +1,4 @@
+import { MutableRefObject } from 'react';
 import {
     SpaceProps,
     LayoutProps,
@@ -16,4 +17,6 @@ import {
   export interface IStyledProps extends SpaceProps, LayoutProps, TypographyProps, ColorProps, FlexboxProps {}
   
   //  Extends from IStyledProps and React.AllHTMLAttributes<HTMLAllCollection> except for some keys defined in OmittedProps
-  export interface IBoxProps extends IStyledProps, Omit<React.AllHTMLAttributes<HTMLAllCollection>, OmittedProps> {}
+  export interface IBoxProps extends IStyledProps, Omit<React.AllHTMLAttributes<HTMLAllCollection>, OmittedProps> {
+    ref?: MutableRefObject<HTMLDivElement | null>;
+  }

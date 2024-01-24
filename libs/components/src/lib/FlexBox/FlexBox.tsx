@@ -27,6 +27,6 @@ export const Box: React.FC<React.PropsWithChildren<IBoxProps>> = styled('div')(
     )
 )
 
-export const Flex = styled(Box)({
+export const Flex: React.FC<React.PropsWithChildren<IBoxProps>>  = styled(Box)({
     display: 'flex'
 })

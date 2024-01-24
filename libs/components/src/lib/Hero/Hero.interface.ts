@@ -5,4 +5,5 @@ export interface IHeroProps {
     video?: string;
     primaryHeading?: string;
     secondaryHeading?: string;
+    variant?: 'small' | 'large';
 }

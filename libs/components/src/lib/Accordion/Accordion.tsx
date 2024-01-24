@@ -1,55 +1,48 @@
 import React from "react";
-import { Column, Container } from "../Layout/Layout";
-import { Box, Flex } from "../FlexBox/FlexBox";
+import { Column, Container, Grid } from "../Layout/Layout";
+import { Flex } from "../FlexBox/FlexBox";
 import { Text } from "../Typography/Typography";
 import { useState, useRef, useEffect } from "react";
-import { AccordionTitle, ArrowIcon, Wrapper } from "./Accordion.style";
-import { downArrow } from "../../assets/downArrow";
-import { FeaturePanelTitle } from "../FeaturePanel/FeaturePanel.style";
+import {
+  AccordionItemsWrapper,
+  AccordionTextContainer,
+  AccordionTitle,
+  ArrowIcon,
+  Wrapper,
+} from "./Accordion.style";
+import { useWindowWidth } from "../../../../hooks";
+import { useTheme } from "@emotion/react";
+import { ITheme } from "../../styles/theme";
+import { AccordionItem, IAccordionProps } from "./Accordion.interface";
 
-const Accordion: React.FC<any> = ({
-  title,
-  // items
-}) => {
-  const items = [
-    {
-      title: "hello",
-      copy: "hello",
-    },
-    {
-      title: "hello1",
-      copy: "hello1",
-    },
-    {
-      title: "hello2",
-      copy: "hello2",
-    },
-  ];
+const Accordion: React.FC<IAccordionProps> = ({ title, items }) => {
+  const width = useWindowWidth();
+  const { breakpoints } = useTheme() as ITheme;
+  const isMobileNav = 0 < width && width <= parseInt(breakpoints[2]);
 
   return (
     <Wrapper>
       <Container>
-        <Flex>
-          <Column width={[12, 12, 12, 6]}>
-            <AccordionTitle>
-              {"FREQUENTLY ASKED QUESTIONS"}
+        <Grid>
+          <Column width={[12, null, 6]}>
+            <AccordionTitle size={isMobileNav ? "small" : "medium"}>
+              {title}
             </AccordionTitle>
           </Column>
-          <Column width={[12, 12, 12, 6]}>
-            <Flex flexDirection={"column"}>
-              {items.map((item) => (
-                <AccordionItem {...item} />
+          <Column width={[12, null, 6]}>
+            <AccordionItemsWrapper>
+              {items.map((item, i) => (
+                <AccordionItem {...item} key={i} />
               ))}
-            </Flex>
+            </AccordionItemsWrapper>
           </Column>
-        </Flex>
+        </Grid>
       </Container>
     </Wrapper>
   );
 };
 
-const AccordionItem: React.FC<any> = ({ title, copy }) => {
-  const downArrowObj = { __html: downArrow };
+const AccordionItem: React.FC<AccordionItem> = ({ title, copy }) => {
 
   const [isActive, setIsActive] = useState(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
@@ -66,26 +59,24 @@ const AccordionItem: React.FC<any> = ({ title, copy }) => {
   }, [isActive]);
 
   return (
-    <Box width={"fit-content"} color={'white'}>
-      <Flex onClick={() => setIsActive((prev) => !prev)}>
-        <Text>{title}</Text>
-        <ArrowIcon
-          isActive={isActive}
-          dangerouslySetInnerHTML={downArrowObj}
-        ></ArrowIcon>
-      </Flex>
-
-      <Box
-        style={{
-          maxHeight: `${contentHeight}px`,
-          overflow: "hidden",
-          transition: "max-height 0.3s ease",
-        }}
-        ref={contentRef}
+    <>
+      <Flex
+        onClick={() => setIsActive((prev) => !prev)}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        style={{ cursor: 'pointer'}}
       >
-        <Text>{copy}</Text>
-      </Box>
-    </Box>
+        <Text >{title}</Text>
+        <ArrowIcon
+          name="DownArrow"
+          color={'white'}
+          isActive={isActive}    
+        />
+      </Flex>
+      <AccordionTextContainer contentHeight={contentHeight} ref={contentRef}>
+        <Text marginY={'small'}>{copy}</Text>
+      </AccordionTextContainer>
+    </>
   );
 };
 

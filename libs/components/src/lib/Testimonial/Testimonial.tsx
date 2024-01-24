@@ -2,11 +2,12 @@ import React from "react";
 import {
   CardContainer,
   MessageContainer,
+  SpeechMark,
   UserContainer,
-  UserIcon,
+  UserImage,
   UserInformation,
+  UserInitials,
 } from "./Testimonial.style";
-import Image from "../Image/Image";
 import { Text } from "../Typography/Typography";
 import { ITestimonialProps } from "./Testimonial.interface";
 import { IImageProps } from "../../types/common";
@@ -16,23 +17,25 @@ const Testimonial: React.FC<React.PropsWithChildren<ITestimonialProps>> = ({
   username,
   date,
   message,
-  ...rest
 }) => {
-  console.log(rest)
+
+  const initials = username.split(' ').map(el => el[0].toUpperCase()).join('');
+
   return (
     <CardContainer>
       <UserContainer>
-        <UserIcon>
-          <Image {...userImage as IImageProps} />
-        </UserIcon>
+        {userImage?.src ? (
+          <UserImage {...(userImage as IImageProps)} />
+        ) : (
+          <UserInitials initials={initials} />
+        )}
         <UserInformation>
-          <Text>{username}</Text> 
+          <Text>{username}</Text>
           <Text>{date}</Text>
         </UserInformation>
       </UserContainer>
-
       <MessageContainer>
-        {/* <Text>{quotationMark}</Text> */}
+        <SpeechMark>“</SpeechMark>
         <Text>{message}</Text>
       </MessageContainer>
     </CardContainer>

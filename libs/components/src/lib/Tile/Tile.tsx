@@ -1,18 +1,23 @@
 import React from "react";
-import Image from "../Image/Image";
-import { HoverTitle, TileTitle, TileWrapper } from "./Tile.styles";
+import { HoverText, StyledImage, TileTitle, TileWrapper } from "./Tile.styles";
+import { useTheme } from "@emotion/react";
+import { useWindowWidth } from "../../../../hooks";
+import { ITheme } from "../../styles/theme";
+import { ITileProps } from "./Tile.interface";
 
-const Tile: React.FC<React.PropsWithChildren<any>> = ({
+const Tile: React.FC<React.PropsWithChildren<ITileProps>> = ({
   image,
   title,
   hoverText,
 }) => {
-  console.log('image', image)
+  const { breakpoints } = useTheme() as ITheme;
+  const width = useWindowWidth(); 
+  const isMobileNav = 0 < width && width <= parseInt(breakpoints[2]);
   return (
     <TileWrapper>
       <TileTitle>{title}</TileTitle>
-      <HoverTitle size={"xxlarge"}>{hoverText}</HoverTitle>
-      <Image {...image} />
+      <HoverText size={isMobileNav? "large" : "xxlarge"}>{hoverText}</HoverText>
+      <StyledImage {...image} height={'100%'}  />
     </TileWrapper>
   );
 };

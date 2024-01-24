@@ -1,67 +1,114 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { CarouselBox, CarouselContainer, CarouselTitle } from "./Carousel.style";
+import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel';
+import useEmblaCarousel from 'embla-carousel-react'
+import React, { PropsWithChildren, useCallback, useEffect, useState } from 'react'
+import Button from '../Button/Button';
+import { ITheme } from '../../styles/theme';
+import { useTheme } from '@emotion/react';
+import { useWindowWidth } from '../../../../hooks';
+import { ControlWrapper, Wrapper, CarouselHeader, CarouselTitle, FlexContainer, Slide, SlideItemContainer } from './Carousel.style';
+import { Container } from '../Layout/Layout';
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 2.98,
-  slidesToScroll: 1,
-  autoplay: true,
-  className: "slider",
-  autoplaySpeed: 2000,
-  pauseOnFocus: true,
-  variableWidth: false, 
-  responsive: [{
-    breakpoint: 500,
-    settings: {
-        slidesToShow: 1
-    }
-  }],
-  nextArrow: (
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={25}
-    height={25}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke={"black"}
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M9 18l6-6-6-6" />
-  </svg>
-),
-prevArrow: (
-  <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width={90}
-  height={90}
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke={"black"}
-  strokeWidth="2"
-  strokeLinecap="round"
-  strokeLinejoin="round"
->
-  <path d="M15 18l-6-6 6-6" />
-</svg>
-)
-};
+export interface ICarouselProps {
+    title: string;
+    options?: EmblaOptionsType;
+    slideSize: number[]
+}
 
-const Carousel: React.FC<React.PropsWithChildren<any>> = ({ children, title }) => {
+export interface ICarouselControlsProps {
+  scrollPrev: () => void;
+  scrollNext: () => void;
+  prevBtnDisabled: boolean;
+  nextBtnDisabled: boolean;
+  isMobileNav?: boolean;
+}
+
+const CarouselControls: React.FC<ICarouselControlsProps> = ({ scrollPrev, scrollNext, prevBtnDisabled, nextBtnDisabled, isMobileNav }) => {
   return (
-    <CarouselBox>
-        <CarouselContainer>
-        <CarouselTitle>{title}</CarouselTitle>
-        <Slider {...settings}>{children}</Slider>
-        </CarouselContainer>
-    </CarouselBox>
+    <ControlWrapper isMobileNav={isMobileNav}>
+      <Button
+        variant={"secondary"}
+        icon={{ name: "LeftArrow", iconPosition: "end" }}
+        onClick={scrollPrev}
+        disabled={prevBtnDisabled}
+      />
+      <Button
+        variant={"secondary"}
+        icon={{ name: "RightArrow", iconPosition: "end" }}
+        onClick={scrollNext}
+        disabled={nextBtnDisabled}
+      />
+    </ControlWrapper>
   );
-};
+}
 
-export default Carousel;
+
+
+const Carousel: React.FC<PropsWithChildren<ICarouselProps>> = ({ title, options = {}, children, slideSize }) => {
+
+    const [emblaRef, emblaApi] = useEmblaCarousel(options)
+    const [prevBtnDisabled, setPrevBtnDisabled] = useState(false)
+    const [nextBtnDisabled, setNextBtnDisabled] = useState(false)
+    
+    const { breakpoints } = useTheme() as ITheme;
+    const width = useWindowWidth();
+    const isMobileNav = 0 < width && width <= parseInt(breakpoints[2]);
+    
+    const scrollPrev = useCallback(
+        () => emblaApi && emblaApi.scrollPrev(),
+        [emblaApi]
+      )
+      const scrollNext = useCallback(
+        () => emblaApi && emblaApi.scrollNext(),
+        [emblaApi]
+      )
+
+      const onSelect = useCallback((emblaApi: EmblaCarouselType) => {
+        setPrevBtnDisabled(!emblaApi.canScrollPrev())
+        setNextBtnDisabled(!emblaApi.canScrollNext())
+      }, [])
+    
+      useEffect(() => {
+        if (!emblaApi) return
+    
+        onSelect(emblaApi)
+        emblaApi.on('reInit', onSelect)
+        emblaApi.on('select', onSelect)
+      }, [emblaApi, onSelect])
+    
+
+  return (
+    <Wrapper fullWidth>
+      <Container>
+      <CarouselHeader>
+        <CarouselTitle size={isMobileNav ? "small" : "medium"}>
+          {title}
+        </CarouselTitle>
+        { !isMobileNav && <CarouselControls
+          scrollPrev={scrollPrev}
+          scrollNext={scrollNext}
+          prevBtnDisabled={prevBtnDisabled}
+          nextBtnDisabled={nextBtnDisabled}
+        />}
+      </CarouselHeader>
+        {/* @ts-ignore */}
+        <SlideItemContainer ref={emblaRef} >
+          <FlexContainer >
+            {React.Children.map(children, child =>  <Slide slideSize={slideSize}>{child}</Slide>)}
+          </FlexContainer>
+        </SlideItemContainer>
+
+        {isMobileNav && <CarouselControls
+          scrollPrev={scrollPrev}
+          scrollNext={scrollNext}
+          prevBtnDisabled={prevBtnDisabled}
+          nextBtnDisabled={nextBtnDisabled}
+          isMobileNav={isMobileNav}
+        />}
+      </Container>
+    </Wrapper>
+  );
+}
+
+
+
+export default Carousel
