@@ -11,7 +11,7 @@ import {
 import Image from "../Image/Image";
 import { IFeaturePanelProps } from "./FeaturePanel.interface";
 import { useTheme } from "@emotion/react";
-import { useWindowWidth } from "../../../../hooks";
+import { useWindowWidth } from "../../hooks";
 import { ITheme } from "../../styles/theme";
 import Button from "../Button/Button";
 

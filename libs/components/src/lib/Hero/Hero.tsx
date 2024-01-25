@@ -8,7 +8,7 @@ import {
   Wrapper,
 } from "./Hero.style";
 import { IHeroProps } from "./Hero.interface";
-import { useWindowWidth } from "../../../../hooks";
+import { useWindowWidth } from "../../hooks";
 import { useTheme } from "@emotion/react";
 import { ITheme } from "../../styles/theme";
 import { Box } from "../FlexBox/FlexBox";

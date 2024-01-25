@@ -9,6 +9,6 @@ export { default as accordionMapper } from './accordion.mapper';
 export { default as testimonialCarouselMapper } from './testimonialCarousel.mapper';
 export { default as formMapper } from './form.mapper';
 export { default as embedIFrameMapper } from './embediframe.mapper';
-export { default as richTextMapper } from './richtext.mapper';
+export { default as richTextMapper } from './richText.mapper';
 
 export { default as Mapper } from './mappers'

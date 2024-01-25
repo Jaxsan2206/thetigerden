@@ -1,7 +1,7 @@
 import React from "react";
 import { HoverText, StyledImage, TileTitle, TileWrapper } from "./Tile.styles";
 import { useTheme } from "@emotion/react";
-import { useWindowWidth } from "../../../../hooks";
+import { useWindowWidth } from "../../hooks";
 import { ITheme } from "../../styles/theme";
 import { ITileProps } from "./Tile.interface";
 

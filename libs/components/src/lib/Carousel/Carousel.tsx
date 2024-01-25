@@ -4,7 +4,7 @@ import React, { PropsWithChildren, useCallback, useEffect, useState } from 'reac
 import Button from '../Button/Button';
 import { ITheme } from '../../styles/theme';
 import { useTheme } from '@emotion/react';
-import { useWindowWidth } from '../../../../hooks';
+import { useWindowWidth } from '../../hooks';
 import { ControlWrapper, Wrapper, CarouselHeader, CarouselTitle, FlexContainer, Slide, SlideItemContainer } from './Carousel.style';
 import { Container } from '../Layout/Layout';
 

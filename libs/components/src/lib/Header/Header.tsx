@@ -10,7 +10,7 @@ import {
   NavLink,
   Wrapper,
 } from "./Header.style";
-import { useWindowWidth } from "../../../../hooks";
+import { useWindowWidth } from "../../hooks";
 import { useTheme } from "@emotion/react";
 import { ITheme } from "../../styles/theme";
 import { ILinkProps } from "../Link/Link.interface";

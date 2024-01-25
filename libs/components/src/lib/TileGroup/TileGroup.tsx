@@ -6,7 +6,7 @@ import Tile from "../Tile/Tile";
 import { Box, Flex } from "../FlexBox/FlexBox";
 import ButtonWithLink from "../Button/Button";
 import { GroupTitle, StyledColumn } from "./TileGroup.style";
-import { useWindowWidth } from "../../../../hooks";
+import { useWindowWidth } from "../../hooks";
 import { ITitleGroupProps } from "./TileGroup.interface";
 
 const TileGroup: React.FC<React.PropsWithChildren<ITitleGroupProps>> = ({
