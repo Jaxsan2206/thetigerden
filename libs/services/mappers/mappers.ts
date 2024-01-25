@@ -8,6 +8,7 @@ import {
   galleryGridMapper,
   headerMapper,
   heroMapper,
+  richTextMapper,
   testimonialCarouselMapper,
   tileGroupMapper,
 } from ".";
@@ -24,7 +25,8 @@ class Mapper {
     hero: { mapFrom: heroMapper },
     testimonialCarousel: { mapFrom: testimonialCarouselMapper },
     form: { mapFrom: formMapper },
-    map: { mapFrom: embedIFrameMapper }
+    map: { mapFrom: embedIFrameMapper },
+    textBlock: { mapFrom: richTextMapper }
   };
 }
 
