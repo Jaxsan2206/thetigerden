@@ -30,15 +30,14 @@ return function WithRichText(props: Record<string, any>) {
       },
     };
 
-    let componentProps = {}; 
+    const componentProps: { [keys: string]: React.ReactNode } = {}; 
 
     Object.keys(props).forEach((prop: string) => {
       if (props[prop]?.nodeType === 'document'){
-        componentProps = { ...componentProps, prop: documentToReactComponents(props[prop], options)}
-        return;
+         componentProps[prop] = documentToReactComponents(props[prop], options);
+      } else {
+         componentProps[prop] = props[prop]; 
       }
-      componentProps = { ...componentProps, prop: props[prop]}
-      return;
     }); 
 
     return <Component {...componentProps} />;
