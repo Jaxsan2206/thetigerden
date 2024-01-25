@@ -1,20 +1,29 @@
 import ContentfulService from "../../libs/services/contentful/contentful.service";
 import { ComponentGenerator } from "../../libs/services/contentful/ComponentGenerator";
+import { Content, IPageProps } from "@/types";
+import { GetServerSideProps, NextPage } from "next";
 
-const Home = ({ content }) => {
-  return content.map((el, i ) => <ComponentGenerator key={i} content = {el}/>)
+const Home: NextPage<IPageProps> = ({ content }) => {
+  return (
+    <>
+      {content.map((el: Content, i: number) => (
+        <ComponentGenerator key={i} content={el} />
+      ))}
+    </>
+  );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const contentfulService = new ContentfulService();
-  const { headerProps, footerProps, content } = await contentfulService.getTemplateHomePage()
-  return { 
+  const { headerProps, footerProps, content } =
+  await contentfulService.getTemplateHomePage();
+  return {
     props: {
       headerProps,
       content: content || null,
-      footerProps
-   } 
-  }
-}
+      footerProps,
+    },
+  };
+};
 
-export default Home
+export default Home;

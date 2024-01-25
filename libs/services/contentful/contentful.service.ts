@@ -1,9 +1,9 @@
-import { ContentfulClientApi, createClient } from "contentful";
+import { ContentfulClientApi, EntryCollection, EntrySkeletonType, createClient } from "contentful";
 import { Mapper } from "../mappers";
-
+import { Content } from "../mappers/mappers";
 
 class ContentfulService {
-    client: ContentfulClientApi;
+    client: ContentfulClientApi<undefined>;
     mapper: Mapper; 
 
     constructor(){
@@ -20,25 +20,25 @@ class ContentfulService {
             'fields.homepage': 'true',
             include: 10
         });
-        const { headerProps, footerProps } = this.getLayout(response.items[0].fields);
+        const { headerProps, footerProps } = this.getLayout(response);
         return { headerProps, footerProps, content: response.items[0].fields.content }
     }
 
-    async getTemplateLandingPage(slug){
+    async getTemplateLandingPage(slug: string){
         const response = await this.client.getEntries({
             content_type: 'templateLandingPage',
             'fields.slug[in]': slug,
             include: 10
         });
-        const { headerProps, footerProps } = this.getLayout(response.items[0].fields);
+        const { headerProps, footerProps } = this.getLayout(response);
         return { headerProps, footerProps, content: response.items[0].fields.content }
     }
 
-
-    getLayout(data){
-        const { header, footer } = data
-        const headerProps = this.mapper.mapperConfiguration.header.mapfrom(header)
-        const footerProps = this.mapper.mapperConfiguration.footer.mapfrom(footer)
+    getLayout(response: EntryCollection<EntrySkeletonType, undefined, string>){
+        const { header, footer } = response.items[0].fields
+        const mapperConfig = this.mapper.getMapperConfiguration();
+        const headerProps = mapperConfig.header.mapFrom(header as Content)
+        const footerProps = mapperConfig.footer.mapFrom(footer as Content)
         return {
             headerProps, 
             footerProps

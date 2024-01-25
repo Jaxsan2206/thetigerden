@@ -1,6 +1,6 @@
 import { IFeaturePanelProps } from "../../components/src/lib/FeaturePanel/FeaturePanel.interface"
 
-const mapFrom = (content)=> {
+const mapFrom = (content: any )=> {
     const { buttonLabel, buttonLink, copy, image, title } = content.fields
     const featurePanelProps: IFeaturePanelProps = {
         title: title,

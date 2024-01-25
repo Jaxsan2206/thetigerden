@@ -6,7 +6,7 @@ import { Wrapper } from "./GalleryGrid.style";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
-interface IGalleryProps {
+export interface IGalleryProps {
   images?: CustomImage[];
 }
 

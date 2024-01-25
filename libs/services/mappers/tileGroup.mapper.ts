@@ -1,8 +1,8 @@
-const mapFrom = (content) => {
+const mapFrom = (content: any) => {
   const { title, tiles, buttonLabel, buttonLink } = content.fields;
   const tileGroupProps = {
     title: title,
-    tiles: tiles.map((tile) => ({
+    tiles: tiles.map((tile: any) => ({
       title: tile.fields.title,
       image: {
         src: tile.fields.image.fields.file.url,

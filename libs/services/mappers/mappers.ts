@@ -1,3 +1,4 @@
+import { Entry, EntrySkeletonType } from "contentful";
 import {
   accordionMapper,
   announcementMapper,
@@ -13,12 +14,22 @@ import {
   tileGroupMapper,
 } from ".";
 
+export type Content = Entry<EntrySkeletonType, undefined, string>
+
+interface IMapper {
+  mapFrom: (content: Content) => { [keys: string] : any }
+}
+
+interface IMapperConfiguration {
+  [keys: string]: IMapper
+};
+
 class Mapper {
   protected readonly mapperConfiguration = {
     announcement: { mapFrom: announcementMapper },
     accordion: { mapFrom: accordionMapper },
-    header: { mapfrom: headerMapper },
-    footer: { mapfrom: footerMapper },
+    header: { mapFrom: headerMapper },
+    footer: { mapFrom: footerMapper },
     galleryGrid: { mapFrom: galleryGridMapper },
     featurePanel: { mapFrom: featurePanelMapper },
     tileGroup: { mapFrom: tileGroupMapper },
@@ -28,6 +39,10 @@ class Mapper {
     map: { mapFrom: embedIFrameMapper },
     textBlock: { mapFrom: richTextMapper }
   };
+
+  getMapperConfiguration = (): IMapperConfiguration => {
+    return this.mapperConfiguration;
+  }
 }
 
 export default Mapper;

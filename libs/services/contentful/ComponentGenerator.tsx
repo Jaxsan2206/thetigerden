@@ -9,12 +9,25 @@ import TestimonialCarousel from "../../components/src/lib/Testimonial/preset/Tes
 import FormsPanel from "../../components/src/lib/Forms/presets/FormsPanel";
 import withRichText from "../helpers/withRichText";
 import TextBlock from "../../components/src/lib/TextBlock/TextBlock";
+import { IGalleryProps } from "../../components/src/lib/GalleryGrid/GalleryGrid";
+import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFrame.interface";
+import { Content } from "../mappers/mappers";
 
-const GalleryGridNoSSR = dynamic(() => import("../../components/src/lib/GalleryGrid/GalleryGrid"), { ssr: false })
+const GalleryGridNoSSR = dynamic(
+  () => import("../../components/src/lib/GalleryGrid/GalleryGrid"),
+  { ssr: false }
+) as React.FC<IGalleryProps>;
 
-const EmbedIFrameNoSSR = dynamic(() => import("../../components/src/lib/EmbedIFrame/EmbedIFrame"), { ssr: false })
+const EmbedIFrameNoSSR = dynamic(
+  () => import("../../components/src/lib/EmbedIFrame/EmbedIFrame"),
+  { ssr: false }
+) as React.FC<IEmbedIFrameProps>;
 
-const componentMapper = {
+interface IComponentMapper {
+    [keys: string]: React.FC<React.PropsWithChildren<any>>
+}
+
+const componentMapper: IComponentMapper = {
     announcement: Announcement,
     galleryGrid: GalleryGridNoSSR,
     featurePanel: FeaturePanel,
@@ -27,11 +40,15 @@ const componentMapper = {
     textBlock: withRichText(TextBlock)
 }
 
-export const ComponentGenerator: React.FC = ({ content }) => {
-    console.log('content', content)
+interface IComponentGenerator {
+  content: Content;
+}
+
+export const ComponentGenerator: React.FC<React.PropsWithChildren<IComponentGenerator>> = ({ content }) => {
     const mappers = new Mapper();
+    const mapperConfig = mappers.getMapperConfiguration()
     const contentType = content?.sys?.contentType?.sys?.id;
-    const componentProps = mappers.mapperConfiguration[contentType].mapFrom(content)
+    const componentProps = mapperConfig[contentType].mapFrom(content)
     const Component = componentMapper[contentType]; 
     return <Component {...componentProps} />
 }

@@ -1,11 +1,11 @@
-import { IHeader } from "../../components/src/lib/Header/Header.interface"
+import { IHeaderProps } from "../../components/src/lib/Header/Header.interface"
 
 
-const mapFrom = (content)=> {
+const mapFrom = (content: any )=> {
     const { headerLinks, desktopLogo, mobileLogo, showCart } = content.fields
     
-    const headerProps: IHeader = {
-        links: headerLinks.map(link => ({
+    const headerProps: IHeaderProps = {
+        links: headerLinks.map((link: any ) => ({
             label: link.fields.label, 
             href: link.fields.link
         })), 

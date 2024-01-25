@@ -1,7 +1,7 @@
 import { IHeroProps } from "../../components/src/lib/Hero/Hero.interface"
 
 
-const mapFrom = (content)=> {
+const mapFrom = (content: any)=> {
     const { primaryHeading, secondaryHeading, backgroundVideo, backgroundImage, variant } = content.fields
 
     const heroProps: IHeroProps  = {

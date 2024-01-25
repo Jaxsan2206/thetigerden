@@ -1,8 +1,8 @@
 
 
-const mapFrom = (content)=> {
+const mapFrom = (content: any )=> {
     const { images } = content.fields
-    const imageProps = images.map(image => ({
+    const imageProps = images.map((image: any ) => ({
         src: image.fields.file.url,
         original: image.fields.file.url,
         caption: image.fields.title,

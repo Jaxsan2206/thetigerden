@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./Announcement.style";
 
-interface IAnnouncement {
+export interface IAnnouncement {
   message: string;
 }
 

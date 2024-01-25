@@ -1,4 +1,4 @@
-const mapFrom = (content)=> {
+const mapFrom = (content: any)=> {
     return {
         elements: content?.fields?.copy || null
     }
