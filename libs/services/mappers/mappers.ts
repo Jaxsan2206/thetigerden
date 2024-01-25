@@ -9,6 +9,7 @@ import {
   galleryGridMapper,
   headerMapper,
   heroMapper,
+  priceCardGroupMapper,
   richTextMapper,
   testimonialCarouselMapper,
   tileGroupMapper,
@@ -37,7 +38,8 @@ class Mapper {
     testimonialCarousel: { mapFrom: testimonialCarouselMapper },
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
-    textBlock: { mapFrom: richTextMapper }
+    textBlock: { mapFrom: richTextMapper },
+    priceCardGroup: { mapFrom: priceCardGroupMapper }
   };
 
   getMapperConfiguration = (): IMapperConfiguration => {

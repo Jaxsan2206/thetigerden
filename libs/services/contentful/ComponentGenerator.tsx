@@ -12,6 +12,7 @@ import TextBlock from "../../components/src/lib/TextBlock/TextBlock";
 import { IGalleryProps } from "../../components/src/lib/GalleryGrid/GalleryGrid";
 import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFrame.interface";
 import { Content } from "../mappers/mappers";
+import PriceCardGroup from "../../components/src/lib/PriceCardGroup/PriceGroup";
 
 const GalleryGridNoSSR = dynamic(
   () => import("../../components/src/lib/GalleryGrid/GalleryGrid"),
@@ -37,7 +38,8 @@ const componentMapper: IComponentMapper = {
     testimonialCarousel: TestimonialCarousel,
     form: FormsPanel,
     map: EmbedIFrameNoSSR,
-    textBlock: withRichText(TextBlock)
+    textBlock: withRichText(TextBlock),
+    priceCardGroup: PriceCardGroup
 }
 
 interface IComponentGenerator {
@@ -48,8 +50,7 @@ export const ComponentGenerator: React.FC<React.PropsWithChildren<IComponentGene
     const mappers = new Mapper();
     const mapperConfig = mappers.getMapperConfiguration()
     const contentType = content?.sys?.contentType?.sys?.id;
-    const componentProps = mapperConfig[contentType].mapFrom(content)
-    const Component = componentMapper[contentType]; 
+    const Component = componentMapper?.[contentType]; 
+    const componentProps = mapperConfig?.[contentType]?.mapFrom(content)
     return <Component {...componentProps} />
 }
-

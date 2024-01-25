@@ -5,7 +5,7 @@ import { colors } from './colors';
 
 const global: { [ key: string]: string } = {
     color: 'black', 
-    backgroundColor: 'none',
+    backgroundColor: 'offwhite',
     linkColor: 'black', 
     hoverLinkColor: 'blue'
 }

@@ -31,7 +31,7 @@ export const BaseText: React.FC<React.PropsWithChildren<IBaseProps & ITextProps>
 ));
 
 export const BaseCaption: React.FC<React.PropsWithChildren<ITextProps>> = styled(BaseText)({
-  fontWeight: 'bold',
+  fontWeight: 400,
   textTransform: 'uppercase',
   letterSpacing: '0.04rem',
 });

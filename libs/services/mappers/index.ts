@@ -10,5 +10,6 @@ export { default as testimonialCarouselMapper } from './testimonialCarousel.mapp
 export { default as formMapper } from './form.mapper';
 export { default as embedIFrameMapper } from './embediframe.mapper';
 export { default as richTextMapper } from './richText.mapper';
+export { default as priceCardGroupMapper } from './priceCardGroup.mapper';
 
 export { default as Mapper } from './mappers'
