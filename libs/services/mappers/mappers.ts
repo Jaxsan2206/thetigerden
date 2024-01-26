@@ -7,6 +7,7 @@ import {
   footerMapper,
   formMapper,
   galleryGridMapper,
+  groupMapper,
   headerMapper,
   heroMapper,
   priceCardGroupMapper,
@@ -39,7 +40,8 @@ class Mapper {
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
     textBlock: { mapFrom: richTextMapper },
-    priceCardGroup: { mapFrom: priceCardGroupMapper }
+    priceCardGroup: { mapFrom: priceCardGroupMapper },
+    group: { mapFrom: groupMapper }
   };
 
   getMapperConfiguration = (): IMapperConfiguration => {
