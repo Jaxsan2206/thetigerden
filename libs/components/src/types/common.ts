@@ -15,9 +15,3 @@ export interface IImageProps {
     width?: string | number; 
     height?: string | number; 
 }; 
-
-export interface IButtonProps {
-    label: string; 
-    url: string; 
-    variant?: Variant; 
-}

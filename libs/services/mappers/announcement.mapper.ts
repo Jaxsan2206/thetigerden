@@ -3,7 +3,7 @@ import { IAnnouncement } from "../../components/src/lib/Announcement/Announcemen
 const mapFrom = (content: any ): IAnnouncement => {
     const { announcementMessage } = content.fields
     return {
-        message: announcementMessage
+        message: announcementMessage || ''
     }
 }
 

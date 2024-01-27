@@ -18,23 +18,23 @@ export interface IPriceProps {
 }
 
 
-const PriceCard: React.FC<IPriceProps> = ({ title, headline, copy, cta }) => {
+const PriceCard: React.FC<IPriceProps> = ({ title = '', headline = null, copy = '', cta = null }) => {
   return (
     <CardWrapper>
       <Text size={"xlarge"}>{title}</Text>
       <HeadlineWrapper>
         <Headline>
-          <Text fontWeight={500} size={"xxlarge"}>
+          {headline?.price && <Text fontWeight={500} size={"xxlarge"}>
             {headline.price}
-          </Text>
-          <Text fontWeight={500} size={"medium"}>
+          </Text>}
+          {headline?.unit && <Text fontWeight={500} size={"medium"}>
             {headline.unit}
-          </Text>
+          </Text>}
         </Headline>
-        <Caption>{headline.disclaimer}</Caption>
+        {headline?.disclaimer && <Caption>{headline.disclaimer}</Caption>}
       </HeadlineWrapper>
-      <CopyWrapper>{copy}</CopyWrapper>
-      <Button {...cta} />
+      {copy && <CopyWrapper>{copy}</CopyWrapper>}
+      {cta?.href && <Button {...cta} />}
     </CardWrapper>
   );
 };

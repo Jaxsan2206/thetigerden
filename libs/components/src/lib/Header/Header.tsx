@@ -21,9 +21,9 @@ import Burger from "./Burger/Burger";
 
 const Header: React.FC<IHeaderProps> = ({
   links = [],
-  desktopLogo,
-  mobileLogo,
-  showCart,
+  desktopLogo = null,
+  mobileLogo = null,
+  showCart = false,
 }) => {
   const [open, setOpen] = useState(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
@@ -46,15 +46,15 @@ const Header: React.FC<IHeaderProps> = ({
   return (
     <Wrapper>
       <DesktopContainer>
-        <LogoContainer>
+        {!!imageProps?.src && <LogoContainer>
             <Logo href={'/'} {...imageProps} />
-        </LogoContainer>
+        </LogoContainer>}
         <Burger openCallBack={setOpen} openState={open} />
         {!isMobileNav && (
           <LinksContainer>
-            {!!links?.length && links?.map((el: ILinkProps, i: number) => (
-              <NavLink key={i} href={el.href as string}>
-                {el.label}
+            {!!links?.length && links?.map((link: ILinkProps, i: number) => (
+              <NavLink key={i} href={link?.href as string}>
+                {link?.label}
               </NavLink>
             ))}
           </LinksContainer>
@@ -64,6 +64,7 @@ const Header: React.FC<IHeaderProps> = ({
             <Button
               variant={"primary"}
               icon={{ name: "ShoppingCart", iconPosition: "end" }}
+              onClick={() => console.log('pressed cart')}
               disabled
             />
           </CartContainer>
@@ -75,10 +76,10 @@ const Header: React.FC<IHeaderProps> = ({
           contentHeight={contentHeight}
           ref={contentRef}
         >
-          {/* TODO: Mobile Container needs Jesus to come down and style it */}
-          {!!links?.length && links.map((el: ILinkProps, i: number) => (
-            <NavLink key={i} href={el.href as string}>
-              {el.label}
+          {/* TODO: Mobile dropdown needs styling */}
+          {!!links?.length && links.map((link: ILinkProps, i: number) => (
+            <NavLink key={i} href={link?.href as string}>
+              {link?.label}
             </NavLink>
           ))}
         </MobileContainer>

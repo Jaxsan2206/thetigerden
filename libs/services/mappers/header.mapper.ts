@@ -2,22 +2,22 @@ import { IHeaderProps } from "../../components/src/lib/Header/Header.interface"
 
 
 const mapFrom = (content: any )=> {
-    const { headerLinks, desktopLogo, mobileLogo, showCart } = content.fields
+    const { headerLinks, desktopLogo, mobileLogo, showCart } = content?.fields
     
     const headerProps: IHeaderProps = {
         links: headerLinks.map((link: any ) => ({
-            label: link.fields.label, 
-            href: link.fields.link
+            label: link?.fields?.label || '', 
+            href: link?.fields?.link || ''
         })), 
         desktopLogo: {
-            src: desktopLogo.fields.file.url,
-            alt: desktopLogo.fields.title
+            src: desktopLogo?.fields?.file?.url || '',
+            alt: desktopLogo?.fields?.title || ''
         },
         mobileLogo: {
-            src: mobileLogo.fields.file.url,
-            alt: mobileLogo.fields.title
+            src: mobileLogo?.fields?.file?.url || '',
+            alt: mobileLogo?.fields?.title || ''
         },
-        showCart: showCart
+        showCart: showCart || false
     }
     return headerProps
 }

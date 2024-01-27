@@ -10,12 +10,12 @@ const mapFrom = (content: any): any => {
         return { ...componentProps, contentType: contentType }
     })
     return {
-        title: title, 
-        componentsPerRow: componentsPerRow,
-        content: childProps,
+        title: title || '', 
+        componentsPerRow: componentsPerRow || null,
+        content: childProps || [],
         cta: {
-            children: buttonLabel, 
-            href: buttonUrl,
+            children: buttonLabel || '', 
+            href: buttonUrl || '',
             variant: 'secondary'
         }
     }

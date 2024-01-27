@@ -11,9 +11,9 @@ export interface IGalleryProps {
 }
 
 const GalleryGrid: React.FC<React.PropsWithChildren<IGalleryProps>> = ({
-  images,
+  images = [],
 }) => {
-
+  if (!images?.length) return <></>
   const [index, setIndex] = useState(-1);
 
   const currentImage = images?.[index];
@@ -38,9 +38,9 @@ const GalleryGrid: React.FC<React.PropsWithChildren<IGalleryProps>> = ({
         />
         {!!currentImage && (
           <Lightbox
-            mainSrc={currentImage.original}
-            imageTitle={currentImage.caption}
-            mainSrcThumbnail={currentImage.src}
+            mainSrc={currentImage?.original}
+            imageTitle={currentImage?.caption}
+            mainSrcThumbnail={currentImage?.src}
             nextSrc={nextImage?.original}
             nextSrcThumbnail={nextImage?.src}
             prevSrc={prevImage?.original}

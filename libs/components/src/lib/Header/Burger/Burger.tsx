@@ -7,7 +7,7 @@ interface IBurgerProps {
 
 const Burger: React.FC<IBurgerProps> = ({
     openCallBack,
-    openState,
+    openState = false,
   }) => (
     <StyledBurger open={openState} onClick={() => openCallBack(!openState)}>
       <BurgerLines />

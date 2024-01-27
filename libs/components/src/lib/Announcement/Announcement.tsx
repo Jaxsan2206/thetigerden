@@ -6,7 +6,9 @@ export interface IAnnouncement {
 }
 
 const Announcement: React.FC<React.PropsWithChildren<IAnnouncement>> = ({
-  message,
-}) => <Wrapper>{message}</Wrapper>;
+  message = '',
+}) => {
+  return <>{message && <Wrapper>{message}</Wrapper>}</>;
+};
 
 export default Announcement;

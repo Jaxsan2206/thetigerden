@@ -3,7 +3,7 @@ import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFr
 const mapFrom = (content: any )=> {
     const { iFrameCode } = content.fields
     const embedIFrameProps: IEmbedIFrameProps = {
-        iframe: iFrameCode
+        iframe: iFrameCode || ''
     }
     return embedIFrameProps;
 }

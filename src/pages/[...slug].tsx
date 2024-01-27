@@ -15,7 +15,23 @@ const TemplateLandingPage: NextPage<IPageProps> = ({ content }) => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query } ) => {
   const contentfulService = new ContentfulService();
-  const { headerProps, footerProps, content } = await contentfulService.getTemplateLandingPage(query.slug as string)
+
+  let headerProps;
+  let footerProps;
+  let content;
+
+  try {
+    const data = await contentfulService.getTemplateLandingPage(query.slug as string)
+    headerProps = data?.headerProps;
+    footerProps = data?.footerProps;
+    content = data?.content;
+  } catch (error) {
+    console.log(error)
+    return {
+      notFound: true
+    }
+  }
+  
   return { 
     props: {
       headerProps,

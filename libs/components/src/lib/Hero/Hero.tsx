@@ -14,10 +14,10 @@ import { ITheme } from "../../styles/theme";
 import { Box } from "../FlexBox/FlexBox";
 
 const Hero: React.FC<IHeroProps> = ({
-  image,
-  video,
-  primaryHeading,
-  secondaryHeading,
+  image = null,
+  video = '',
+  primaryHeading = '',
+  secondaryHeading = '',
   variant = 'large'
 }) => {
   const width = useWindowWidth();
@@ -27,7 +27,7 @@ const Hero: React.FC<IHeroProps> = ({
     <Wrapper variant={variant}>
       {image?.src && (
         <Box>
-          <HeroImage backgroundImage = {image?.src} />
+          <HeroImage backgroundImage={image.src} />
         </Box>
       )}
       {video && (
@@ -42,12 +42,16 @@ const Hero: React.FC<IHeroProps> = ({
         />
       )}
       <HeadingContainer>
-        <PrimaryHeading size={isMobileNav ? "large" : "xlarge"}>
-          {primaryHeading}
-        </PrimaryHeading>
-        <SecondaryHeading size={isMobileNav ? "large" : "xlarge"}>
-          {secondaryHeading}
-        </SecondaryHeading>
+        {primaryHeading && (
+          <PrimaryHeading size={isMobileNav ? "large" : "xlarge"}>
+            {primaryHeading}
+          </PrimaryHeading>
+        )}
+        {secondaryHeading && (
+          <SecondaryHeading size={isMobileNav ? "large" : "xlarge"}>
+            {secondaryHeading}
+          </SecondaryHeading>
+        )}
       </HeadingContainer>
     </Wrapper>
   );

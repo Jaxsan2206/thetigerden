@@ -16,10 +16,10 @@ import { ITheme } from "../../styles/theme";
 import Button from "../Button/Button";
 
 const FeaturePanel: React.FC<IFeaturePanelProps> = ({
-  copy,
-  title,
-  cta,
-  image,
+  copy = '',
+  title = '',
+  cta = null,
+  image = null,
 }) => {
   const { breakpoints } = useTheme() as ITheme;
   const width = useWindowWidth();
@@ -29,20 +29,22 @@ const FeaturePanel: React.FC<IFeaturePanelProps> = ({
     <Wrapper>
       <Container>
         <Grid>
-          <ImageColumn width={[12, null, 6, null]}>
-            <ImageContainer>
-              <Image {...image} />
-            </ImageContainer>
-          </ImageColumn>
+          {image?.src && (
+            <ImageColumn width={[12, null, 6, null]}>
+              <ImageContainer>
+                <Image {...image} />
+              </ImageContainer>
+            </ImageColumn>
+          )}
           <TextColumn width={[12, null, 6, null]}>
             <Content>
-              <FeaturePanelTitle size={isMobileNav ? "small" : "medium"}>
+              {title && <FeaturePanelTitle size={isMobileNav ? "small" : "medium"}>
                 {title}
-              </FeaturePanelTitle>
-              <FeaturePanelText>{copy}</FeaturePanelText>
-              <Button href={cta?.url} variant={cta?.variant}>
-                {cta?.label}
-              </Button>
+              </FeaturePanelTitle>}
+              {copy && <FeaturePanelText>{copy}</FeaturePanelText>}
+              {cta?.href && <Button href={cta?.href} variant={cta?.variant}>
+                {cta?.children}
+              </Button>}
             </Content>
           </TextColumn>
         </Grid>

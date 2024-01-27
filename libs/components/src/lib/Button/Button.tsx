@@ -11,6 +11,7 @@ const Button: React.FC<React.PropsWithChildren<IButtonProps>> = ({
   onClick,
   ...rest
 }) => {
+  if (!onClick && !href) return <></>;
   const isExternalLink = href?.startsWith("http") || href?.startsWith("www");
   const iconName = icon?.name || (isExternalLink ? "ExternalLink" : null);
   const isIconButton = !children;

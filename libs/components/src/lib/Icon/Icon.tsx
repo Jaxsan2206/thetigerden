@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ExternalLink, ShoppingCart } from "./Icons";
 import { Box } from "../FlexBox/FlexBox";
-import Burger from "./Icons/Burger";
 import DownArrow from "./Icons/DownArrow";
 import { IIconWrapperProps } from "./Icon.interface";
 import YouTube from "./Icons/YouTube";
@@ -18,9 +17,6 @@ export const getIcon = (iconName: string) => {
 
     case "ExternalLink":
       return ExternalLink;
-
-    case "Burger":
-      return Burger;
 
     case "DownArrow":
       return DownArrow;

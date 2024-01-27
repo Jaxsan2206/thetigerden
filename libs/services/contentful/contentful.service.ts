@@ -31,7 +31,7 @@ class ContentfulService {
             include: 10
         });
         const { headerProps, footerProps } = this.getLayout(response);
-        return { headerProps, footerProps, content: response.items[0].fields.content }
+        return { headerProps, footerProps, content: response?.items?.[0]?.fields?.content }
     }
 
     getLayout(response: EntryCollection<EntrySkeletonType, undefined, string>){

@@ -15,27 +15,32 @@ import { useTheme } from "@emotion/react";
 import { ITheme } from "../../styles/theme";
 import { AccordionItem, IAccordionProps } from "./Accordion.interface";
 
-const Accordion: React.FC<IAccordionProps> = ({ title, items }) => {
+const Accordion: React.FC<IAccordionProps> = ({ title = '', items = [] }) => {
   const width = useWindowWidth();
   const { breakpoints } = useTheme() as ITheme;
   const isMobileNav = 0 < width && width <= parseInt(breakpoints[2]);
-
+  const doesTitleExist = !!title;
   return (
     <Wrapper>
       <Container>
         <Grid>
-          <Column width={[12, null, 6]}>
-            <AccordionTitle size={isMobileNav ? "small" : "medium"}>
-              {title}
-            </AccordionTitle>
-          </Column>
-          <Column width={[12, null, 6]}>
-            <AccordionItemsWrapper>
-              {items.map((item, i) => (
-                <AccordionItem {...item} key={i} />
-              ))}
-            </AccordionItemsWrapper>
-          </Column>
+          {doesTitleExist && (
+            <Column width={[12, null, 6]}>
+              <AccordionTitle size={isMobileNav ? "small" : "medium"}>
+                {title}
+              </AccordionTitle>
+            </Column>
+          )}
+          {!!items.length && (
+            // make accordion full column full width if title doesn't exist
+            <Column width={[12, null, doesTitleExist ? 6 : null]}>
+              <AccordionItemsWrapper>
+                {items.map((item, i) => (
+                  <AccordionItem {...item} key={i} />
+                ))}
+              </AccordionItemsWrapper>
+            </Column>
+          )}
         </Grid>
       </Container>
     </Wrapper>
@@ -43,6 +48,8 @@ const Accordion: React.FC<IAccordionProps> = ({ title, items }) => {
 };
 
 const AccordionItem: React.FC<AccordionItem> = ({ title, copy }) => {
+
+  if (!title || !copy ) <></>;
 
   const [isActive, setIsActive] = useState(false);
   const [contentHeight, setContentHeight] = useState<number>(0);
@@ -66,7 +73,7 @@ const AccordionItem: React.FC<AccordionItem> = ({ title, copy }) => {
         justifyContent={"space-between"}
         style={{ cursor: 'pointer'}}
       >
-        <Text >{title}</Text>
+        {title && <Text >{title}</Text>}
         <ArrowIcon
           name="DownArrow"
           color={'white'}
@@ -74,7 +81,7 @@ const AccordionItem: React.FC<AccordionItem> = ({ title, copy }) => {
         />
       </Flex>
       <AccordionTextContainer contentHeight={contentHeight} ref={contentRef}>
-        <Text marginY={'small'}>{copy}</Text>
+        {copy && <Text marginY={'small'}>{copy}</Text>}
       </AccordionTextContainer>
     </>
   );

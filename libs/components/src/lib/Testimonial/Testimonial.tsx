@@ -13,13 +13,13 @@ import { ITestimonialProps } from "./Testimonial.interface";
 import { IImageProps } from "../../types/common";
 
 const Testimonial: React.FC<React.PropsWithChildren<ITestimonialProps>> = ({
-  userImage,
-  username,
-  date,
-  message,
+  userImage = null,
+  username = '',
+  date = '',
+  message = '',
 }) => {
 
-  const initials = username.split(' ').map(el => el[0].toUpperCase()).join('');
+  const initials = username?.split(' ').map(el => el[0].toUpperCase()).join('');
 
   return (
     <CardContainer>
@@ -30,13 +30,13 @@ const Testimonial: React.FC<React.PropsWithChildren<ITestimonialProps>> = ({
           <UserInitials initials={initials} />
         )}
         <UserInformation>
-          <Text>{username}</Text>
-          <Text>{date}</Text>
+          {username && <Text>{username}</Text>}
+          {date && <Text>{date}</Text>}
         </UserInformation>
       </UserContainer>
       <MessageContainer>
         <SpeechMark>“</SpeechMark>
-        <Text>{message}</Text>
+        {message && <Text>{message}</Text>}
       </MessageContainer>
     </CardContainer>
   );

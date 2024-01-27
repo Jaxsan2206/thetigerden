@@ -16,10 +16,10 @@ export interface IGroupProps {
 }
 
 const Group: React.FC<IGroupProps> = ({
-  title,
+  title = '',
   children,
-  componentsPerRow,
-  cta
+  componentsPerRow = 2,
+  cta = null
 }) => {
   const { colors, breakpoints } = useTheme() as ITheme;
   const width = useWindowWidth();
@@ -27,15 +27,15 @@ const Group: React.FC<IGroupProps> = ({
   const responsiveArray = [12, null, 12/componentsPerRow, null]
   const showButton = cta?.children && cta?.href
   return (
-    <Box backgroundColor={colors.offwhite} paddingY={'large'}>
+    <Box backgroundColor={colors.offwhite} paddingY={"large"}>
       <Container>
         {title && (
-          <HeroTitle pb={'xlarge'} size={isMobileNav ? "small" : "medium"}>
+          <HeroTitle pb={"xlarge"} size={isMobileNav ? "small" : "medium"}>
             {title.toUpperCase()}
           </HeroTitle>
         )}
-        <Grid style={{ rowGap: '24px'}}>
-          {React.Children.map(
+        <Grid style={{ rowGap: "24px" }}>
+          {!!React.Children && React.Children.map(
             children as React.ReactElement[],
             (child: React.ReactElement, i) => (
               <Column key={i} width={responsiveArray}>
@@ -44,9 +44,11 @@ const Group: React.FC<IGroupProps> = ({
             )
           )}
         </Grid>
-        {showButton && <Flex paddingTop={"large"} justifyContent={"center"}>
-          <Button {...cta}/>
-        </Flex>}
+        {showButton && (
+          <Flex paddingTop={"large"} justifyContent={"center"}>
+            <Button {...cta} />
+          </Flex>
+        )}
       </Container>
     </Box>
   );

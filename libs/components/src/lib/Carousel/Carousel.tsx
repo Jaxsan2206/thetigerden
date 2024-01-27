@@ -43,7 +43,7 @@ const CarouselControls: React.FC<ICarouselControlsProps> = ({ scrollPrev, scroll
 
 
 
-const Carousel: React.FC<PropsWithChildren<ICarouselProps>> = ({ title, options = {}, children, slideSize }) => {
+const Carousel: React.FC<PropsWithChildren<ICarouselProps>> = ({ title = '', options = {}, children, slideSize = [] }) => {
 
     const [emblaRef, emblaApi] = useEmblaCarousel(options)
     const [prevBtnDisabled, setPrevBtnDisabled] = useState(false)
@@ -79,31 +79,42 @@ const Carousel: React.FC<PropsWithChildren<ICarouselProps>> = ({ title, options 
   return (
     <Wrapper fullWidth>
       <Container>
-      <CarouselHeader>
-        <CarouselTitle size={isMobileNav ? "small" : "medium"}>
-          {title}
-        </CarouselTitle>
-        { !isMobileNav && <CarouselControls
-          scrollPrev={scrollPrev}
-          scrollNext={scrollNext}
-          prevBtnDisabled={prevBtnDisabled}
-          nextBtnDisabled={nextBtnDisabled}
-        />}
-      </CarouselHeader>
-        {/* @ts-ignore */}
-        <SlideItemContainer ref={emblaRef} >
-          <FlexContainer >
-            {React.Children.map(children, child =>  <Slide slideSize={slideSize}>{child}</Slide>)}
-          </FlexContainer>
-        </SlideItemContainer>
+        <CarouselHeader>
+          {title && (
+            <CarouselTitle size={isMobileNav ? "small" : "medium"}>
+              {title}
+            </CarouselTitle>
+          )}
+          {!isMobileNav && (
+            <CarouselControls
+              scrollPrev={scrollPrev}
+              scrollNext={scrollNext}
+              prevBtnDisabled={prevBtnDisabled}
+              nextBtnDisabled={nextBtnDisabled}
+            />
+          )}
+        </CarouselHeader>
 
-        {isMobileNav && <CarouselControls
-          scrollPrev={scrollPrev}
-          scrollNext={scrollNext}
-          prevBtnDisabled={prevBtnDisabled}
-          nextBtnDisabled={nextBtnDisabled}
-          isMobileNav={isMobileNav}
-        />}
+        {!!React.Children && (
+          // @ts-ignore
+          <SlideItemContainer ref={emblaRef}>
+            <FlexContainer>
+              {React.Children.map(children, (child) => (
+                <Slide slideSize={slideSize}>{child}</Slide>
+              ))}
+            </FlexContainer>
+          </SlideItemContainer>
+        )}
+
+        {isMobileNav && (
+          <CarouselControls
+            scrollPrev={scrollPrev}
+            scrollNext={scrollNext}
+            prevBtnDisabled={prevBtnDisabled}
+            nextBtnDisabled={nextBtnDisabled}
+            isMobileNav={isMobileNav}
+          />
+        )}
       </Container>
     </Wrapper>
   );

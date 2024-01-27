@@ -1,4 +1,5 @@
-import { IButtonProps, IImageProps } from "../../types/common";
+import { IImageProps } from "../../types/common";
+import { IButtonProps } from "../Button/Button.interface";
 
 export interface IFeaturePanelProps {
   copy: string;
