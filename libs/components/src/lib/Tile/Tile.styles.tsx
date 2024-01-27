@@ -14,11 +14,11 @@ export const TileWrapper: React.FC<PropsWithChildren<IBoxProps & IBaseProps>> = 
     position: 'relative', 
     height: '100%',
     ':hover':{
-       '> :nth-child(1)':{
+       '> h1:nth-of-type(1)':{
         transform: 'translate(-50%, -100%)', 
         opacity: 0
        },
-        '> *:nth-child(2)':{
+        '> p:nth-of-type(1)':{
         opacity: 1,
         transform: 'translate(-50%, -50%)',
         zIndex: 1

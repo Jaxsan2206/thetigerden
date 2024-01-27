@@ -77,7 +77,7 @@ const Carousel: React.FC<PropsWithChildren<ICarouselProps>> = ({ title = '', opt
     
 
   return (
-    <Wrapper fullWidth>
+    <Wrapper>
       <Container>
         <CarouselHeader>
           {title && (

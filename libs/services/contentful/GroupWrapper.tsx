@@ -18,10 +18,10 @@ const GroupWrapper: React.FC<React.PropsWithChildren<IGroupWrapper>> = ({
 }) => {
   return (
     <Group title={title} componentsPerRow={componentsPerRow} cta={cta}>
-      {content.map((child: any) => {
+      {content.map((child: any, i: number) => {
         const contentType = child.contentType;
         const Component = componentMapper?.[contentType];
-        return <Component {...child} />;
+        return <Component {...child} key={i} />;
       })}
     </Group>
   );

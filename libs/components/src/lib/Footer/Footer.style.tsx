@@ -1,10 +1,11 @@
 import styled from "@emotion/styled"
 import { IBaseProps } from "../../types/common"
-import { Flex } from "../FlexBox/FlexBox"
+import { Box, Flex } from "../FlexBox/FlexBox"
 import { Container, Grid, Column } from "../Layout/Layout"
 import { IContainerProps, IColumnProps } from "../Layout/Layout.interface"
 import { ITextProps } from "../Typography/Typography.interface"
 import { Text } from "../Typography/Typography"
+import { IBoxProps } from "../FlexBox/Flexbox.interface"
 
 export const FooterWrapper: React.FC<React.PropsWithChildren<IContainerProps & IBaseProps>> = styled(Container)(
     ({ theme: { space, colors }}) => ({
@@ -14,7 +15,7 @@ export const FooterWrapper: React.FC<React.PropsWithChildren<IContainerProps & I
     })
   )
   
-  export const StyledGrid: React.FC<React.PropsWithChildren<IContainerProps & IBaseProps>> = styled(Grid)(
+  export const StyledGrid: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Grid)(
     ({ theme: { space }}) => ({
         rowGap: space.large
     })

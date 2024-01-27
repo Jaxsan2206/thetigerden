@@ -35,10 +35,11 @@ export const SlideItemContainer: React.FC<React.PropsWithChildren<IBoxProps & IB
 })
 
 
-export const Wrapper: React.FC<React.PropsWithChildren<IContainerProps & IBaseProps>> = styled(Container)(
+export const Wrapper: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)(
     ({ theme: { colors, space }}) => ({
         backgroundColor: colors.offwhite,
-        paddingBottom: space.xlarge,
+        paddingTop: space.large,
+        paddingBottom: space.large,
     })
 )
 
@@ -60,6 +61,5 @@ export const CarouselTitle: React.FC<React.PropsWithChildren<IBaseProps & IHeroT
     ({ theme: { colors, space }}) => ({
         color: colors.black, 
         paddingBottom: space.base,
-        paddingTop: space.xlarge
     })
 )
