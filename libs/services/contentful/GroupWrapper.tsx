@@ -1,7 +1,7 @@
 import React from "react";
 import Group from "../../components/src/lib/Group/Group";
 import { componentMapper } from "./ComponentGenerator";
-import { IButtonProps } from "../../components/src/types/common";
+import { IButtonProps } from "../../components/src/lib/Button/Button.interface";
 
 interface IGroupWrapper {
   content: any[];
