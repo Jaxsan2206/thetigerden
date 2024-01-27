@@ -14,6 +14,8 @@ import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFr
 import { Content } from "../mappers/mappers";
 import PriceCardGroup from "../../components/src/lib/PriceCardGroup/PriceGroup";
 import GroupWrapper from "./GroupWrapper";
+import PriceCard from "../../components/src/lib/PriceCard/PriceCard";
+import Tile from "../../components/src/lib/Tile/Tile";
 
 const GalleryGridNoSSR = dynamic(
   () => import("../../components/src/lib/GalleryGrid/GalleryGrid"),
@@ -41,7 +43,10 @@ export const componentMapper: IComponentMapper = {
     map: EmbedIFrameNoSSR,
     textBlock: withRichText(TextBlock),
     priceCardGroup: PriceCardGroup,
-    group: GroupWrapper
+    group: GroupWrapper,
+    // TODO: Recreate the price content type in contentful so name matches
+    price: withRichText(PriceCard),
+    tile: Tile
 }
 
 interface IComponentGenerator {

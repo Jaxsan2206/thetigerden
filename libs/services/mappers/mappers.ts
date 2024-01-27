@@ -11,9 +11,11 @@ import {
   headerMapper,
   heroMapper,
   priceCardGroupMapper,
+  priceCardMapper,
   richTextMapper,
   testimonialCarouselMapper,
   tileGroupMapper,
+  tileMapper,
 } from ".";
 
 export type Content = Entry<EntrySkeletonType, undefined, string>
@@ -41,7 +43,9 @@ class Mapper {
     map: { mapFrom: embedIFrameMapper },
     textBlock: { mapFrom: richTextMapper },
     priceCardGroup: { mapFrom: priceCardGroupMapper },
-    group: { mapFrom: groupMapper }
+    group: { mapFrom: groupMapper },
+    price: { mapFrom: priceCardMapper },
+    tile: { mapFrom: tileMapper }
   };
 
   getMapperConfiguration = (): IMapperConfiguration => {
