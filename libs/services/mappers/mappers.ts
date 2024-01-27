@@ -11,10 +11,10 @@ import {
   headerMapper,
   heroMapper,
   priceCardMapper,
+  richTextMapper,
   testimonialCarouselMapper,
   tileMapper,
 } from ".";
-// import richTextMapper from './richText.mapper';
 
 export type Content = Entry<EntrySkeletonType, undefined, string>
 
@@ -38,7 +38,7 @@ class Mapper {
     testimonialCarousel: { mapFrom: testimonialCarouselMapper },
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
-    // textBlock: { mapFrom: richTextMapper },
+    textBlock: { mapFrom: richTextMapper },
     group: { mapFrom: groupMapper },
     price: { mapFrom: priceCardMapper },
     tile: { mapFrom: tileMapper }

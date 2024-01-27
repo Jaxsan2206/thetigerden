@@ -38,7 +38,7 @@ export const componentMapper: IComponentMapper = {
     testimonialCarousel: TestimonialCarousel,
     form: FormsPanel,
     map: EmbedIFrameNoSSR,
-    // textBlock: withRichText(TextBlock),
+    textBlock: withRichText(TextBlock),
     group: GroupWrapper,
     // TODO: Recreate the price content type in contentful so name matches
     price: withRichText(PriceCard),

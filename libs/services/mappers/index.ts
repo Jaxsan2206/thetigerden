@@ -11,5 +11,5 @@ export { default as embedIFrameMapper } from './embediframe.mapper';
 export { default as groupMapper } from './group.mapper';
 export { default as priceCardMapper } from './priceCard.mapper';
 export { default as tileMapper } from './tile.mapper';
-
+export { default as richTextMapper } from './richText.mapper';
 export { default as Mapper } from './mappers'
