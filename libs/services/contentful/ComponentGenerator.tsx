@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import Announcement from "../../components/src/lib/Announcement/Announcement";
 import { Mapper } from "../mappers";
 import FeaturePanel from "../../components/src/lib/FeaturePanel/FeaturePanel";
-import TileGroup from "../../components/src/lib/TileGroup/TileGroup";
 import Hero from "../../components/src/lib/Hero/Hero";
 import Accordion from "../../components/src/lib/Accordion/Accordion";
 import TestimonialCarousel from "../../components/src/lib/Testimonial/preset/TestimonialCarousel";
@@ -12,7 +11,6 @@ import TextBlock from "../../components/src/lib/TextBlock/TextBlock";
 import { IGalleryProps } from "../../components/src/lib/GalleryGrid/GalleryGrid";
 import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFrame.interface";
 import { Content } from "../mappers/mappers";
-import PriceCardGroup from "../../components/src/lib/PriceCardGroup/PriceGroup";
 import GroupWrapper from "./GroupWrapper";
 import PriceCard from "../../components/src/lib/PriceCard/PriceCard";
 import Tile from "../../components/src/lib/Tile/Tile";
@@ -35,14 +33,12 @@ export const componentMapper: IComponentMapper = {
     announcement: Announcement,
     galleryGrid: GalleryGridNoSSR,
     featurePanel: FeaturePanel,
-    tileGroup: TileGroup,
     hero: Hero,
     accordion: Accordion,
     testimonialCarousel: TestimonialCarousel,
     form: FormsPanel,
     map: EmbedIFrameNoSSR,
     textBlock: withRichText(TextBlock),
-    priceCardGroup: PriceCardGroup,
     group: GroupWrapper,
     // TODO: Recreate the price content type in contentful so name matches
     price: withRichText(PriceCard),

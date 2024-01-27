@@ -10,11 +10,9 @@ import {
   groupMapper,
   headerMapper,
   heroMapper,
-  priceCardGroupMapper,
   priceCardMapper,
   richTextMapper,
   testimonialCarouselMapper,
-  tileGroupMapper,
   tileMapper,
 } from ".";
 
@@ -36,13 +34,11 @@ class Mapper {
     footer: { mapFrom: footerMapper },
     galleryGrid: { mapFrom: galleryGridMapper },
     featurePanel: { mapFrom: featurePanelMapper },
-    tileGroup: { mapFrom: tileGroupMapper },
     hero: { mapFrom: heroMapper },
     testimonialCarousel: { mapFrom: testimonialCarouselMapper },
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
     textBlock: { mapFrom: richTextMapper },
-    priceCardGroup: { mapFrom: priceCardGroupMapper },
     group: { mapFrom: groupMapper },
     price: { mapFrom: priceCardMapper },
     tile: { mapFrom: tileMapper }
