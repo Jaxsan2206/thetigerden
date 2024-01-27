@@ -11,10 +11,10 @@ import {
   headerMapper,
   heroMapper,
   priceCardMapper,
-  richTextMapper,
   testimonialCarouselMapper,
   tileMapper,
 } from ".";
+import richTextMapper from './richText.mapper';
 
 export type Content = Entry<EntrySkeletonType, undefined, string>
 
