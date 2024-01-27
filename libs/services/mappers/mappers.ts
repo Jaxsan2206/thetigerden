@@ -11,7 +11,7 @@ import {
   headerMapper,
   heroMapper,
   priceCardMapper,
-  richTextMapper,
+  textBlockMapper,
   testimonialCarouselMapper,
   tileMapper,
 } from ".";
@@ -38,7 +38,7 @@ class Mapper {
     testimonialCarousel: { mapFrom: testimonialCarouselMapper },
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
-    textBlock: { mapFrom: richTextMapper },
+    textBlock: { mapFrom: textBlockMapper },
     group: { mapFrom: groupMapper },
     price: { mapFrom: priceCardMapper },
     tile: { mapFrom: tileMapper }
