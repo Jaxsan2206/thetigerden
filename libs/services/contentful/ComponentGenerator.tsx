@@ -13,6 +13,9 @@ import { IGalleryProps } from "../../components/src/lib/GalleryGrid/GalleryGrid"
 import { IEmbedIFrameProps } from "../../components/src/lib/EmbedIFrame/EmbedIFrame.interface";
 import { Content } from "../mappers/mappers";
 import PriceCardGroup from "../../components/src/lib/PriceCardGroup/PriceGroup";
+import GroupWrapper from "./GroupWrapper";
+import PriceCard from "../../components/src/lib/PriceCard/PriceCard";
+import Tile from "../../components/src/lib/Tile/Tile";
 
 const GalleryGridNoSSR = dynamic(
   () => import("../../components/src/lib/GalleryGrid/GalleryGrid"),
@@ -28,7 +31,7 @@ interface IComponentMapper {
     [keys: string]: React.FC<React.PropsWithChildren<any>>
 }
 
-const componentMapper: IComponentMapper = {
+export const componentMapper: IComponentMapper = {
     announcement: Announcement,
     galleryGrid: GalleryGridNoSSR,
     featurePanel: FeaturePanel,
@@ -39,7 +42,11 @@ const componentMapper: IComponentMapper = {
     form: FormsPanel,
     map: EmbedIFrameNoSSR,
     textBlock: withRichText(TextBlock),
-    priceCardGroup: PriceCardGroup
+    priceCardGroup: PriceCardGroup,
+    group: GroupWrapper,
+    // TODO: Recreate the price content type in contentful so name matches
+    price: withRichText(PriceCard),
+    tile: Tile
 }
 
 interface IComponentGenerator {

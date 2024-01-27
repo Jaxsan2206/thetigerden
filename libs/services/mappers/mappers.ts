@@ -7,12 +7,15 @@ import {
   footerMapper,
   formMapper,
   galleryGridMapper,
+  groupMapper,
   headerMapper,
   heroMapper,
   priceCardGroupMapper,
+  priceCardMapper,
   richTextMapper,
   testimonialCarouselMapper,
   tileGroupMapper,
+  tileMapper,
 } from ".";
 
 export type Content = Entry<EntrySkeletonType, undefined, string>
@@ -39,7 +42,10 @@ class Mapper {
     form: { mapFrom: formMapper },
     map: { mapFrom: embedIFrameMapper },
     textBlock: { mapFrom: richTextMapper },
-    priceCardGroup: { mapFrom: priceCardGroupMapper }
+    priceCardGroup: { mapFrom: priceCardGroupMapper },
+    group: { mapFrom: groupMapper },
+    price: { mapFrom: priceCardMapper },
+    tile: { mapFrom: tileMapper }
   };
 
   getMapperConfiguration = (): IMapperConfiguration => {
