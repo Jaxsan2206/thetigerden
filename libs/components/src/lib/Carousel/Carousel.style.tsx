@@ -30,9 +30,17 @@ export const Slide: React.FC<React.PropsWithChildren<IContainerProps & IBaseProp
 )
 )
 
-export const SlideItemContainer: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)({
+// export const SlideItemContainer: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)({
+//         overflow: 'hidden'
+// })
+
+export const SlideItemContainer: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)(
+    ({ theme: { space }}) => ({
         overflow: 'hidden',
-})
+        paddingLeft: space.xlarge, 
+        paddingRight: space.xlarge
+    })
+)
 
 
 export const Wrapper: React.FC<React.PropsWithChildren<IBoxProps & IBaseProps>> = styled(Box)(
